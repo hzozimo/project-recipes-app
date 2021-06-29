@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import propTypes from 'prop-types';
 import contextRecipes from './Context';
-import App from '../App';
 import fetchCategories from '../api/fetchCategories';
 
-function RecipesProvider() {
+function RecipesProvider({ children }) {
   const [filter, setFilter] = useState([]);
   const [mealsCategories, setMealsCategories] = useState([]);
   const [drinksCategories, setDrinksCategories] = useState([]);
@@ -36,9 +36,13 @@ function RecipesProvider() {
   };
   return (
     <contextRecipes.Provider value={ state }>
-      <App />
+      { children }
     </contextRecipes.Provider>
   );
 }
 
 export default RecipesProvider;
+
+RecipesProvider.propTypes = {
+  children: propTypes.func,
+}.isRequired;
