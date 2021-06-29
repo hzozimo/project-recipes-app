@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import propTypes from 'prop-types';
 import contextRecipes from './Context';
 import fetchCategories from '../api/fetchCategories';
 
@@ -41,3 +42,7 @@ function RecipesProvider({ children }) {
 }
 
 export default RecipesProvider;
+
+RecipesProvider.propTypes = {
+  children: propTypes.func,
+}.isRequired;
