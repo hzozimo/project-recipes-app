@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { Comidas, Bebidas, Login, Perfil, DetalhesComida,
   DetalhesBebida, Explorar, ExplorarComidas, ExplorarBebidas,
   IngredientesComidas, IngredientesBebidas, inProgressComida,
@@ -7,7 +7,7 @@ import { Comidas, Bebidas, Login, Perfil, DetalhesComida,
 
 function App() {
   return (
-    <>
+    <Switch>
       <Route path="/explorar/bebidas/ingredientes" component={ IngredientesBebidas } />
       <Route path="/explorar/comidas/ingredientes" component={ IngredientesComidas } />
       <Route path="/comidas/:id/in-progress" component={ inProgressComida } />
@@ -24,7 +24,8 @@ function App() {
       <Route path="/receitas-favoritas" component={ ReceitasFavoritas } />
 
       <Route exact path="/" component={ Login } />
-    </>
+
+    </Switch>
   );
 }
 
