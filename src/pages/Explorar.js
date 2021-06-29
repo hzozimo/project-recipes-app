@@ -1,9 +1,11 @@
 import React from 'react';
+import Footer from '../components/Footer';
 
 function Explorar() {
   return (
     <div>
-      olar
+      <h1>Explorar</h1>
+      <Footer />
     </div>
   );
 }
