@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import contextRecipes from './Context';
-import App from '../App';
 import fetchCategories from '../api/fetchCategories';
 
 function RecipesProvider({ children }) {

@@ -67,7 +67,7 @@ describe('5 - Desenvolva a tela de maneira que o formulário só seja válido ap
   });
 });
 
-describe.only('6 - Salve 2 tokens no localStorage após a submissão, identificados pelas chaves mealsToken e cocktailsToken', () => {
+describe('6 - Salve 2 tokens no localStorage após a submissão, identificados pelas chaves mealsToken e cocktailsToken', () => {
   it('Após a submissão mealsToken e cocktailsToken devem estar salvos em localStorage', () => {
     cy.visit('http://localhost:3000/', {
       onBeforeLoad(win) {
