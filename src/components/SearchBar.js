@@ -7,12 +7,16 @@ function SearchBar() {
   const [searchText, setSearchText] = useState('');
   const { setData } = useContext(ContextRecipes);
 
+  function alertJoke() {
+    const alert = SearchBar.customAlert;
+    alert('Sua busca deve conter somente 1 (um) caracter');
+  }
+
   async function apiChoose() {
     const SIZE_SEARCH = Number(searchText.length);
     if (SIZE_SEARCH > 1) {
-      alert('Sua busca deve conter somente 1 (um) caracter');
+      alertJoke();
     }
-
     const response = await apiRequest(selectedRadioButton, searchText);
     setData(response);
   }
