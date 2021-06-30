@@ -7,11 +7,15 @@ function SearchBar() {
   const [searchText, setSearchText] = useState('');
   const { setData } = useContext(ContextRecipes);
 
+  const customAlert = (fn, msg) => {
+    fn(msg);
+  };
+
   // ATENÇÂO REFATORE LINT ZUEIRO
   async function apiChoose() {
     const SIZE_SEARCH = Number(searchText.length);
     if (SIZE_SEARCH > 1 && selectedRadioButton === 'primeiraLetra') {
-      alert('Sua busca deve conter somente 1 (um) caracter');
+      customAlert(alert, 'Sua busca deve conter somente 1 (um) caracter');
     }
     const response = await apiRequest(selectedRadioButton, searchText);
     setData(response);
