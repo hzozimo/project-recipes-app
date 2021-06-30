@@ -36,7 +36,7 @@ function Header({ title }) {
        || title === 'Explorar Origem' ? renderSearchImage() : false }
       { searchForm
         ? (
-          <SearchBar />
+          <SearchBar title={ title } />
         )
         : false}
     </header>

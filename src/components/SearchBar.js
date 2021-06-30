@@ -1,24 +1,34 @@
 import React, { useState, useContext } from 'react';
+import propTypes from 'prop-types';
 import apiRequest from '../service/service';
 import ContextRecipes from '../context/ContextRecipes';
 
-function SearchBar() {
+function SearchBar({ title }) {
   const [selectedRadioButton, setSelectedRadioButton] = useState('ingrediente');
   const [searchText, setSearchText] = useState('');
-  const { setData } = useContext(ContextRecipes);
+  const { setData, setLoading } = useContext(ContextRecipes);
 
   const customAlert = (fn, msg) => {
     fn(msg);
   };
 
-  // ATENÇÂO REFATORE LINT ZUEIRO
-  async function apiChoose() {
+  // RESOLVIDO PROBLEM DE LINT RESOLVENDO PROBLEMAS DE ASSINCRONICIDADE COM LOADING
+  async function apiChoose(titleParams) {
     const SIZE_SEARCH = Number(searchText.length);
     if (SIZE_SEARCH > 1 && selectedRadioButton === 'primeiraLetra') {
       customAlert(alert, 'Sua busca deve conter somente 1 (um) caracter');
     }
-    const response = await apiRequest(selectedRadioButton, searchText);
-    setData(response);
+    setLoading(true);
+    if (titleParams === 'Comida') {
+      const response = await apiRequest(selectedRadioButton, searchText);
+      setData(response);
+      setLoading(false);
+    }
+    if (titleParams === 'Bebida') {
+      const response = await apiRequest(selectedRadioButton, searchText);
+      setData(response);
+      setLoading(false);
+    }
   }
 
   return (
@@ -65,11 +75,16 @@ function SearchBar() {
       <button
         type="button"
         data-testid="exec-search-btn"
-        onClick={ () => apiChoose() }
+        onClick={ () => apiChoose(title) }
       >
         Buscar
       </button>
     </form>);
 }
+
+SearchBar.propTypes = {
+  title: propTypes.string.isRequired,
+
+};
 
 export default SearchBar;
