@@ -7,33 +7,15 @@ function SearchBar() {
   const [searchText, setSearchText] = useState('');
   const { setData } = useContext(ContextRecipes);
 
-  function alertJoke() {
-    const alert = SearchBar.customAlert;
-    alert('Sua busca deve conter somente 1 (um) caracter');
-  }
-
+  // ATENÇÂO REFATORE LINT ZUEIRO
   async function apiChoose() {
     const SIZE_SEARCH = Number(searchText.length);
-    if (SIZE_SEARCH > 1) {
-      alertJoke();
+    if (SIZE_SEARCH > 1 && selectedRadioButton === 'primeiraLetra') {
+      alert('Sua busca deve conter somente 1 (um) caracter');
     }
     const response = await apiRequest(selectedRadioButton, searchText);
     setData(response);
   }
-
-  // Falta apenas a Lǵica do alert caso para caso a a opção primeira letra
-  // seja selecionada!
-  // function alertFirstLetter() {
-  //   return (alert('Sua busca deve conter somente 1 (um) caracter'));
-  // }
-
-  // function firstLetter({ target: { value } }) {
-  //   const SIZE_ONE = Number(searchText.length);
-  //   setSelectedRadioButton(value);
-  //   if (SIZE_ONE > 1) {
-  //     alertFirstLetter();
-  //   }
-  // }
 
   return (
     <form>
