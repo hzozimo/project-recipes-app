@@ -12,12 +12,17 @@ function SearchBar() {
     setData(response);
   }
 
-  function firstLetter({ target: { value } }) {
-    setSelectedRadioButton(value);
-    if (searchText.length > 1) {
-      return alert('Sua busca deve conter somente 1 (um) caracter');
-    }
-  }
+  Falta apenas a Lǵica do alert caso para caso a a opção primeira letra 
+  seja selecionada!
+
+//   function firstLetter({ target: { value } }) {
+//     const alert = useAlert ();
+//     alert.show('Oh look, an alert!')
+//     setSelectedRadioButton(value);
+//     if (searchText.length > 1) {
+//       return useAlert
+//     }
+//   }
 
   return (
     <form>
