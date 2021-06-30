@@ -15,7 +15,7 @@ function Bebidas() {
   const loadingFunc = () => (<div>..Loading...</div>);
   const dataRender = () => (
     <div>
-      {drinks.map((drink) => (
+      {drinks && drinks.map((drink) => (
         <div key={ drink.idDrink }>
           <span>{drink.strDrink}</span>
         </div>))}
@@ -26,7 +26,7 @@ function Bebidas() {
       <Header title={ Bebidas.displayName } />
       <h1>Bebidas</h1>
       <div>
-        {Object.keys(dataDrink).length === 0 ? loadingFunc() : dataRender()}
+        {!dataDrink.drinks ? loadingFunc() : dataRender()}
       </div>
       <Footer />
     </div>

@@ -5,6 +5,7 @@ import ContextRecipes from '../context/ContextRecipes';
 import useFetchInicialFoods from '../Hooks/fetchInicialFoods';
 
 function Comidas() {
+  const ONZE = 11;
   Comidas.displayName = 'Comidas';
   const { data } = useContext(ContextRecipes);
   useFetchInicialFoods();
@@ -16,7 +17,7 @@ function Comidas() {
   const loadingFunc = () => (<div>..Loading...</div>);
   const dataRender = () => (
     <div>
-      {meals.map((food) => (
+      {meals && meals.slice(0, ONZE).map((food) => (
         <div key={ food.idMeal }>
           <span>{food.strMeal}</span>
         </div>))}
@@ -27,7 +28,7 @@ function Comidas() {
       <Header title={ Comidas.displayName } />
       <h1>Comidas</h1>
       <div>
-        {Object.keys(data).length === 0 ? loadingFunc() : dataRender()}
+        {!data.meals ? loadingFunc() : dataRender()}
       </div>
       <Footer />
     </div>
