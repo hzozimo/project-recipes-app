@@ -8,6 +8,7 @@ function Bebidas() {
     <div>
       <Header title={ Bebidas.displayName } />
       <h1>Bebidas</h1>
+
       <Footer />
     </div>
   );
