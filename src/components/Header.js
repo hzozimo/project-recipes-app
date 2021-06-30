@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import propTypes from 'prop-types';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
+import SearchBar from './SearchBar';
 
 function Header({ title }) {
   const [searchForm, setSearchForm] = useState(false);
@@ -35,34 +36,7 @@ function Header({ title }) {
        || title === 'Explorar Origem' ? renderSearchImage() : false }
       { searchForm
         ? (
-          <form>
-            <input type="text" name="searchtext" data-testid="search-input" />
-            <label htmlFor="ingrediente">
-              <input
-                type="radio"
-                id="ingrediente"
-                value="ingrediente"
-                name="serchType"
-                data-testid="ingredient-search-radio"
-              />
-              Ingrediente
-            </label>
-            <label htmlFor="nome">
-              <input type="radio" id="nome" value="nome" name="serchType" />
-              Nome
-            </label>
-            <label htmlFor="primeiraLetra">
-              <input
-                type="radio"
-                id="primeiraLetra"
-                value="primeiraLetra"
-                name="serchType"
-                data-testid="first-letter-search-radio"
-              />
-              Primeira Letra
-            </label>
-            <button type="button">Buscar</button>
-          </form>
+          <SearchBar />
         )
         : false}
     </header>
