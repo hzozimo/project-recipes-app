@@ -1,9 +1,10 @@
 import React from 'react';
+import Footer from '../components/Footer';
 
 function IngredientesComidas() {
   return (
     <div>
-      olar
+      <Footer />
     </div>
   );
 }

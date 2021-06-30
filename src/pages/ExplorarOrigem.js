@@ -1,7 +1,7 @@
 import React from 'react';
 import Footer from '../components/Footer';
 
-function ExplorarComidas() {
+function ExplorarOrigem() {
   return (
     <div>
       <Footer />
@@ -9,4 +9,4 @@ function ExplorarComidas() {
   );
 }
 
-export default ExplorarComidas;
+export default ExplorarOrigem;
