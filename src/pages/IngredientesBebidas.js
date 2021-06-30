@@ -1,9 +1,11 @@
 import React from 'react';
+import Header from '../components/Header';
 
 function IngredientesBebidas() {
+  IngredientesBebidas.displayName = 'Explorar Ingredientes';
   return (
     <div>
-      olar
+      <Header title={ IngredientesBebidas.displayName } />
     </div>
   );
 }

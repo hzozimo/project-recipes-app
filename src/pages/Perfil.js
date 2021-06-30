@@ -1,9 +1,11 @@
 import React from 'react';
+import Header from '../components/Header';
 
 function Perfil() {
+  Perfil.displayName = 'Perfil';
   return (
     <div>
-      olar
+      <Header title={ Perfil.displayName } />
     </div>
   );
 }
