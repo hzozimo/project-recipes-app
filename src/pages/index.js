@@ -14,7 +14,6 @@ import InProgressBebidas from './InProgressBebidas';
 import inProgressComida from './InProgressComida';
 import ReceitasFeitas from './ReceitasFeitas';
 import ReceitasFavoritas from './ReceitasFavoritas';
-import ExplorarOrigem from './ExplorarOrigem';
 
 export { Comidas };
 export { Bebidas };
@@ -22,7 +21,6 @@ export { Login };
 export { Perfil };
 export { DetalhesComida };
 export { DetalhesBebida };
-export { ExplorarOrigem };
 export { Explorar };
 export { ExplorarComidas };
 export { ExplorarBebidas };
