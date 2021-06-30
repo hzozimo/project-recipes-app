@@ -14,18 +14,20 @@ function SearchBar({ title }) {
   };
 
   // RESOLVIDO PROBLEM DE LINT RESOLVENDO PROBLEMAS DE ASSINCRONICIDADE COM LOADING
-  async function apiChoose(titleParams) {
+  async function apiChoose() {
     const SIZE_SEARCH = Number(searchText.length);
     if (SIZE_SEARCH > 1 && selectedRadioButton === 'primeiraLetra') {
       customAlert(alert, 'Sua busca deve conter somente 1 (um) caracter');
     }
     setLoading(true);
-    if (titleParams === 'Comida') {
+    if (title === 'Comidas') {
+      console.log('cheguei aqui', title);
       const response = await apiRequest(selectedRadioButton, searchText);
       setData(response);
       setLoading(false);
     }
-    if (titleParams === 'Bebida') {
+    if (title === 'Bebidas') {
+      console.log('cheguei aqui', title);
       const response = await drinkRequest(selectedRadioButton, searchText);
       setDataDrink(response);
       setLoading(false);
@@ -76,7 +78,7 @@ function SearchBar({ title }) {
       <button
         type="button"
         data-testid="exec-search-btn"
-        onClick={ () => apiChoose(title) }
+        onClick={ () => apiChoose() }
       >
         Buscar
       </button>

@@ -6,9 +6,8 @@ import useFetchInicialDrinks from '../Hooks/fetchInicialDrinks';
 
 function Bebidas() {
   Bebidas.displayName = 'Bebidas';
-  const { dataDrink, setDataDrink } = useContext(ContextRecipes);
-  const inicialDrinks = useFetchInicialDrinks();
-  setDataDrink(inicialDrinks);
+  const { dataDrink } = useContext(ContextRecipes);
+  useFetchInicialDrinks();
 
   const dataAux = { ...dataDrink };
   const { drinks } = dataAux;

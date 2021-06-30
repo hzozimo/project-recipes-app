@@ -5,13 +5,13 @@ import ContextRecipes from '../context/ContextRecipes';
 import useFetchInicialFoods from '../Hooks/fetchInicialFoods';
 
 function Comidas() {
-  const { data, setData } = useContext(ContextRecipes);
   Comidas.displayName = 'Comidas';
-  const inicialFoods = useFetchInicialFoods();
-  setData(inicialFoods);
+  const { data } = useContext(ContextRecipes);
+  useFetchInicialFoods();
 
   const dataAux = { ...data };
   const { meals } = dataAux;
+  console.log(meals);
 
   const loadingFunc = () => (<div>..Loading...</div>);
   const dataRender = () => (
