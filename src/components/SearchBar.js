@@ -12,6 +12,13 @@ function SearchBar() {
     setData(response);
   }
 
+  function firstLetter({ target: { value } }) {
+    setSelectedRadioButton(value);
+    if (searchText.length > 1) {
+      return alert('Sua busca deve conter somente 1 (um) caracter');
+    }
+  }
+
   return (
     <form>
       <input
@@ -49,7 +56,7 @@ function SearchBar() {
           value="primeiraLetra"
           name="serchType"
           data-testid="first-letter-search-radio"
-          onChange={ ({ target: { value } }) => setSelectedRadioButton(value) }
+          onChange={ (event) => firstLetter(event) }
         />
         Primeira Letra
       </label>
