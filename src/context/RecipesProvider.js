@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import propTypes from 'prop-types';
-import contextRecipes from './Context';
+import ContextRecipes from './ContextRecipes';
 import fetchCategories from '../api/fetchCategories';
 
 function RecipesProvider({ children }) {
@@ -10,6 +10,7 @@ function RecipesProvider({ children }) {
   const [currentFood, setCurrentFood] = useState({});
   const [currentFoodIngredients, setCurrentFoodIngredients] = useState([]);
   const [mainIngredient, setMain] = useState('');
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -33,11 +34,13 @@ function RecipesProvider({ children }) {
     filter,
     mainIngredient,
     setMain,
+    data,
+    setData,
   };
   return (
-    <contextRecipes.Provider value={ state }>
+    <ContextRecipes.Provider value={ state }>
       { children }
-    </contextRecipes.Provider>
+    </ContextRecipes.Provider>
   );
 }
 
