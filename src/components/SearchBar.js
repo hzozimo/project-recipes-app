@@ -2,11 +2,12 @@ import React, { useState, useContext } from 'react';
 import propTypes from 'prop-types';
 import apiRequest from '../service/service';
 import ContextRecipes from '../context/ContextRecipes';
+import drinkRequest from '../service/drinkservice';
 
 function SearchBar({ title }) {
   const [selectedRadioButton, setSelectedRadioButton] = useState('ingrediente');
   const [searchText, setSearchText] = useState('');
-  const { setData, setLoading } = useContext(ContextRecipes);
+  const { setData, setLoading, setDataDrink } = useContext(ContextRecipes);
 
   const customAlert = (fn, msg) => {
     fn(msg);
@@ -25,8 +26,8 @@ function SearchBar({ title }) {
       setLoading(false);
     }
     if (titleParams === 'Bebida') {
-      const response = await apiRequest(selectedRadioButton, searchText);
-      setData(response);
+      const response = await drinkRequest(selectedRadioButton, searchText);
+      setDataDrink(response);
       setLoading(false);
     }
   }
