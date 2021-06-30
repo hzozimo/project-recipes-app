@@ -1,9 +1,11 @@
 import React from 'react';
+import Header from '../components/Header';
 
 function ReceitasFeitas() {
+  ReceitasFeitas.displayName = 'Receitas Feitas';
   return (
     <div>
-      olar
+      <Header title={ ReceitasFeitas.displayName } />
     </div>
   );
 }
