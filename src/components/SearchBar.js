@@ -8,21 +8,28 @@ function SearchBar() {
   const { setData } = useContext(ContextRecipes);
 
   async function apiChoose() {
+    const SIZE_SEARCH = Number(searchText.length);
+    if (SIZE_SEARCH > 1) {
+      alert('Sua busca deve conter somente 1 (um) caracter');
+    }
+
     const response = await apiRequest(selectedRadioButton, searchText);
     setData(response);
   }
 
-  Falta apenas a Lǵica do alert caso para caso a a opção primeira letra 
-  seja selecionada!
+  // Falta apenas a Lǵica do alert caso para caso a a opção primeira letra
+  // seja selecionada!
+  // function alertFirstLetter() {
+  //   return (alert('Sua busca deve conter somente 1 (um) caracter'));
+  // }
 
-//   function firstLetter({ target: { value } }) {
-//     const alert = useAlert ();
-//     alert.show('Oh look, an alert!')
-//     setSelectedRadioButton(value);
-//     if (searchText.length > 1) {
-//       return useAlert
-//     }
-//   }
+  // function firstLetter({ target: { value } }) {
+  //   const SIZE_ONE = Number(searchText.length);
+  //   setSelectedRadioButton(value);
+  //   if (SIZE_ONE > 1) {
+  //     alertFirstLetter();
+  //   }
+  // }
 
   return (
     <form>
@@ -61,7 +68,7 @@ function SearchBar() {
           value="primeiraLetra"
           name="serchType"
           data-testid="first-letter-search-radio"
-          onChange={ (event) => firstLetter(event) }
+          onChange={ ({ target: { value } }) => setSelectedRadioButton(value) }
         />
         Primeira Letra
       </label>
