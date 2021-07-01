@@ -3,6 +3,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ContextRecipes from '../context/ContextRecipes';
 import useFetchInicialDrinks from '../Hooks/fetchInicialDrinks';
+import FilterBar from '../components/FilterBar';
 
 function Bebidas() {
   Bebidas.displayName = 'Bebidas';
@@ -24,7 +25,8 @@ function Bebidas() {
   return (
     <div>
       <Header title={ Bebidas.displayName } />
-      <h1>Bebidas</h1>
+      {/* <h1>Bebidas</h1> */}
+      <FilterBar title={ Bebidas.displayName } />
       <div>
         {Object.keys(dataDrink).length === 0 ? loadingFunc() : dataRender()}
       </div>
