@@ -3,6 +3,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ContextRecipes from '../context/ContextRecipes';
 import useFetchInicialFoods from '../Hooks/fetchInicialFoods';
+import FilterBar from '../components/FilterBar';
 
 function Comidas() {
   const DOZE = 12;
@@ -12,7 +13,7 @@ function Comidas() {
 
   const dataAux = { ...data };
   const { meals } = dataAux;
-  console.log(meals);
+  // console.log(meals);
 
   const loadingFunc = () => (<div>..Loading...</div>);
   const dataRender = () => (
@@ -31,7 +32,8 @@ function Comidas() {
   return (
     <div>
       <Header title={ Comidas.displayName } />
-      <h1>Comidas</h1>
+      {/* <h1>Comidas</h1> */}
+      <FilterBar title={ Comidas.displayName } />
       <div>
         {!data.meals ? loadingFunc() : dataRender()}
       </div>

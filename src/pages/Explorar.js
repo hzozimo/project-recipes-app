@@ -7,7 +7,7 @@ function Explorar() {
   return (
     <div>
       <Header title={ Explorar.displayName } />
-      <h1>Explorar</h1>
+      {/* <h1>Explorar</h1> */}
       <Footer />
     </div>
   );
