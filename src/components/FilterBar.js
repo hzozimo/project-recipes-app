@@ -2,29 +2,22 @@ import React, { useContext } from 'react';
 import propTypes from 'prop-types';
 import ContextRecipes from '../context/ContextRecipes';
 import '../App.css';
-import apiRequest from '../service/service';
+import { filterMealsBtn, filterDrinksBtn } from '../api/fetchFilterBtn';
 
 function FilterBar({ title }) {
-  function handlerFilter({ target: value }) {
-    if (title === Comidas) {
-      apiRequest('ingrediente', value);
+  const { setData, setDataDrink } = useContext(ContextRecipes);
+  function handlerFilter({ target: { value } }) {
+    if (title === 'Comidas') {
+      filterMealsBtn(value)
+        .then((res) => setData(res));
+    }
+    if (title === 'Bebidas') {
+      filterDrinksBtn(value)
+        .then((res) => setDataDrink(res));
     }
   }
 
   const { mealsCategories, drinksCategories } = useContext(ContextRecipes);
-
-  // async fetchList() {
-  //   const { patchName } = this.props;
-  //   if (patchName === '/comidas') {
-  //     const req = await fetch('https://www.themealdb.com/api/json/v1/1/list.php?c=list');
-  //     const results = await req.json();
-  //     this.setState({ results });
-  //   }
-  //   if (patchName === '/bebidas') {
-  //     const req = await fetch('https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list');
-  //     const results = await req.json();
-  //     this.setState({ results });
-  //   }
 
   if (title === 'Comidas') {
     return (
