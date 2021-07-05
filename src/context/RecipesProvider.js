@@ -18,8 +18,8 @@ function RecipesProvider({ children }) {
     async function fetchData() {
       const drinksCategoriesAPI = await fetchCategories('drinks');
       const mealCategoriesAPI = await fetchCategories('meals');
-      setDrinksCategories(drinksCategoriesAPI);
       setMealsCategories(mealCategoriesAPI);
+      setDrinksCategories(drinksCategoriesAPI);
     }
     fetchData();
   }, []);
