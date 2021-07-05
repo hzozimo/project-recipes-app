@@ -25,18 +25,24 @@ function SearchBar({ title }) {
     if (title === 'Comidas') {
       console.log('cheguei aqui', title);
       const response = await apiRequest(selectedRadioButton, searchText);
-      if (response.meals.length === 1) {
+      if (response.meals === null) {
+        alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
+      } else if (response.meals.length === 1) {
         history.push(`/comidas/${response.meals[0].idMeal}`);
       }
+
       setData(response);
       setLoading(false);
     }
     if (title === 'Bebidas') {
       console.log('cheguei aqui', title);
       const response = await drinkRequest(selectedRadioButton, searchText);
-      if (response.drinks.length === 1) {
+      if (response.drinks === null) {
+        alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
+      } else if (response.drinks.length === 1) {
         history.push(`/bebidas/${response.drinks[0].idDrink}`);
       }
+
       console.log(response.drinks);
       setDataDrink(response);
       // Verificar o tamanho do array
