@@ -21,6 +21,7 @@ function Comidas() {
         <div data-testid={ `${index}-recipe-card` } key={ food.idMeal }>
           <p data-testid={ `${index}-card-name` }>{food.strMeal}</p>
           <img
+            width="200px"
             data-testid={ `${index}-card-img` }
             src={ food.strMealThumb }
             alt={ food.strMeal }
