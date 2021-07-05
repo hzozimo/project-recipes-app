@@ -12,6 +12,7 @@ function Bebidas() {
 
   const dataAux = { ...dataDrink };
   const { drinks } = dataAux;
+  // console.log(drinks);
 
   const loadingFunc = () => (<div>..Loading...</div>);
   const dataRender = () => (
