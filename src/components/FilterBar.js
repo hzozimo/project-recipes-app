@@ -8,7 +8,6 @@ function FilterBar({ title }) {
 
   if (title === 'Comidas') {
     return (
-      {console.log(mealsCategories);}
       <div className="filterBar">
         {
           mealsCategories.map((meal, index) => (
