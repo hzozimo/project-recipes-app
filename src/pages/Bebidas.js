@@ -5,6 +5,7 @@ import ContextRecipes from '../context/ContextRecipes';
 import useFetchInicialDrinks from '../Hooks/fetchInicialDrinks';
 
 function Bebidas() {
+  const ONZE = 12;
   Bebidas.displayName = 'Bebidas';
   const { dataDrink } = useContext(ContextRecipes);
   useFetchInicialDrinks();
@@ -15,9 +16,15 @@ function Bebidas() {
   const loadingFunc = () => (<div>..Loading...</div>);
   const dataRender = () => (
     <div>
-      {drinks.map((drink) => (
-        <div key={ drink.idDrink }>
-          <span>{drink.strDrink}</span>
+      {drinks && drinks.slice(0, ONZE).map((drink, index) => (
+        <div data-testid={ `${index}-recipe-card` } key={ drink.idDrink }>
+          <p data-testid={ `${index}-card-name` }>{drink.strDrink}</p>
+          <img
+            width="200px"
+            data-testid={ `${index}-card-img` }
+            src={ drink.strDrinkThumb }
+            alt={ drink.strDrink }
+          />
         </div>))}
     </div>);
 
@@ -26,7 +33,7 @@ function Bebidas() {
       <Header title={ Bebidas.displayName } />
       <h1>Bebidas</h1>
       <div>
-        {Object.keys(dataDrink).length === 0 ? loadingFunc() : dataRender()}
+        {!dataDrink.drinks ? loadingFunc() : dataRender()}
       </div>
       <Footer />
     </div>
