@@ -17,16 +17,15 @@ function Comidas() {
   const loadingFunc = () => (<div>..Loading...</div>);
   const dataRender = () => (
     <div>
-      {meals === null ? alert('Sinto muito, não encontramos nenhuma receita para esses filtros.')
-        : meals && meals.slice(0, DOZE).map((food, index) => (
-          <div data-testid={ `${index}-recipe-card` } key={ food.idMeal }>
-            <p data-testid={ `${index}-card-name` }>{food.strMeal}</p>
-            <img
-              data-testid={ `${index}-card-img` }
-              src={ food.strMealThumb }
-              alt={ food.strMeal }
-            />
-          </div>))}
+      { meals && meals.slice(0, DOZE).map((food, index) => (
+        <div data-testid={ `${index}-recipe-card` } key={ food.idMeal }>
+          <p data-testid={ `${index}-card-name` }>{food.strMeal}</p>
+          <img
+            data-testid={ `${index}-card-img` }
+            src={ food.strMealThumb }
+            alt={ food.strMeal }
+          />
+        </div>))}
     </div>);
 
   return (
