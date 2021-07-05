@@ -6,7 +6,7 @@ import useFetchInicialDrinks from '../Hooks/fetchInicialDrinks';
 import FilterBar from '../components/FilterBar';
 
 function Bebidas() {
-  const ONZE = 12;
+  const DOZE = 12;
   Bebidas.displayName = 'Bebidas';
   const { dataDrink } = useContext(ContextRecipes);
   useFetchInicialDrinks();
@@ -18,7 +18,7 @@ function Bebidas() {
   const loadingFunc = () => (<div>..Loading...</div>);
   const dataRender = () => (
     <div>
-      {drinks && drinks.slice(0, ONZE).map((drink, index) => (
+      { drinks && drinks.slice(0, DOZE).map((drink, index) => (
         <div data-testid={ `${index}-recipe-card` } key={ drink.idDrink }>
           <p data-testid={ `${index}-card-name` }>{drink.strDrink}</p>
           <img
