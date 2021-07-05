@@ -6,6 +6,7 @@ import useFetchInicialFoods from '../Hooks/fetchInicialFoods';
 import FilterBar from '../components/FilterBar';
 
 function Comidas() {
+  const DOZE = 12;
   Comidas.displayName = 'Comidas';
   const { data } = useContext(ContextRecipes);
   useFetchInicialFoods();
@@ -17,9 +18,14 @@ function Comidas() {
   const loadingFunc = () => (<div>..Loading...</div>);
   const dataRender = () => (
     <div>
-      {meals.map((food) => (
-        <div key={ food.idMeal }>
-          <span>{food.strMeal}</span>
+      { meals && meals.slice(0, DOZE).map((food, index) => (
+        <div data-testid={ `${index}-recipe-card` } key={ food.idMeal }>
+          <p data-testid={ `${index}-card-name` }>{food.strMeal}</p>
+          <img
+            data-testid={ `${index}-card-img` }
+            src={ food.strMealThumb }
+            alt={ food.strMeal }
+          />
         </div>))}
     </div>);
 
@@ -29,7 +35,7 @@ function Comidas() {
       {/* <h1>Comidas</h1> */}
       <FilterBar title={ Comidas.displayName } />
       <div>
-        {Object.keys(data).length === 0 ? loadingFunc() : dataRender()}
+        {!data.meals ? loadingFunc() : dataRender()}
       </div>
       <Footer />
     </div>
