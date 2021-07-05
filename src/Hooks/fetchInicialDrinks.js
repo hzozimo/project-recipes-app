@@ -6,7 +6,7 @@ const useFetchInicialDrinks = () => {
   const { setDataDrink } = useContext(ContextRecipes);
 
   const fetchDrink = () => {
-    fetch('https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Vodka')
+    fetch('https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Light rum')
       .then((res) => res.json())
       .then((res) => {
         setDataDrink(res);

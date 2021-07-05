@@ -12,7 +12,6 @@ function Comidas() {
 
   const dataAux = { ...data };
   const { meals } = dataAux;
-  console.log(meals);
 
   const loadingFunc = () => (<div>..Loading...</div>);
   const dataRender = () => (
