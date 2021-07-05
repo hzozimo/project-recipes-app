@@ -30,7 +30,6 @@ function SearchBar({ title }) {
       } else if (response.meals.length === 1) {
         history.push(`/comidas/${response.meals[0].idMeal}`);
       }
-
       setData(response);
       setLoading(false);
     }
@@ -42,10 +41,7 @@ function SearchBar({ title }) {
       } else if (response.drinks.length === 1) {
         history.push(`/bebidas/${response.drinks[0].idDrink}`);
       }
-
-      console.log(response.drinks);
       setDataDrink(response);
-      // Verificar o tamanho do array
       setLoading(false);
     }
   }

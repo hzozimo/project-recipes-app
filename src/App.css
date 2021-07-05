@@ -74,3 +74,13 @@
   position: fixed;
   width: 100%;
 }
+
+.filterBar {
+  height: 50px;
+  margin: 5px;
+}
+
+.filterButtons {
+  height: 20px;
+  margin: 2px;
+}
