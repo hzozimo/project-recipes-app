@@ -46,4 +46,8 @@ function RecipeMealsButton({ foodDetails }) {
   );
 }
 
+RecipeMealsButton.propTypes = {
+  foodDetails: PropTypes.shape({ meals: [] }).isRequired,
+};
+
 export default RecipeMealsButton;

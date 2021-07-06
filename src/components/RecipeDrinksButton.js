@@ -46,4 +46,8 @@ function RecipeDrinksButton({ drinkDetails }) {
   );
 }
 
+RecipeDrinksButton.propTypes = {
+  drinkDetails: PropTypes.shape({ drinks: [] }).isRequired,
+};
+
 export default RecipeDrinksButton;
