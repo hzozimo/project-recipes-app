@@ -6,6 +6,7 @@ import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 // import blackHeartIcon from '../images/blackHeartIcon.svg';
 import './detalhes.css';
+import RecipeMealsButton from '../components/RecipeMealsButton';
 
 function DetalhesComida() {
   const { id } = useParams();
@@ -127,14 +128,7 @@ function DetalhesComida() {
             <div>
               { renderRecomendations() }
             </div>
-            <button
-              type="button"
-              data-testid="start-recipe-btn"
-              className="iniciarReceita"
-            >
-              Inciar Receita
-
-            </button>
+            <RecipeMealsButton foodDetails={ foodDetails } />
           </div>)
         : <h1> Loading...</h1>}
     </div>

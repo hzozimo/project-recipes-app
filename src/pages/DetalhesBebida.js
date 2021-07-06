@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { useParams } from 'react-router-dom';
+import RecipeDrinksButton from '../components/RecipeDrinksButton';
 import ContextRecipes from '../context/ContextRecipes';
 import useFetchIdAndRecomendations from '../Hooks/fetchDetailsAndRecomendations';
 import shareIcon from '../images/shareIcon.svg';
@@ -107,14 +108,7 @@ function DetalhesBebida() {
             <div>
               { renderRecomendations() }
             </div>
-            <button
-              type="button"
-              data-testid="start-recipe-btn"
-              className="iniciarReceita"
-            >
-              Inciar Receita
-
-            </button>
+            <RecipeDrinksButton drinkDetails={ drinkDetails } />
           </div>)
         : <h1> Loading...</h1>}
     </div>
