@@ -1,6 +1,6 @@
 import React from 'react';
 
-function DetalhesBebidas() {
+function DetalhesBebida() {
   return (
     <div>
       olar
@@ -8,4 +8,4 @@ function DetalhesBebidas() {
   );
 }
 
-export default DetalhesBebidas;
+export default DetalhesBebida;
