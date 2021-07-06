@@ -13,8 +13,8 @@ function RecipesProvider({ children }) {
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(false);
   const [dataDrink, setDataDrink] = useState({});
-  const [btnMealsStatus, setBtnMealsStatus] = useState('unchecked');
-  const [btnDrinksStatus, setBtnDrinksStatus] = useState('unchecked');
+  const [btnMealsToggle, setBtnMealsToggle] = useState(false);
+  const [btnDrinksToggle, setBtnDrinksToggle] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
@@ -44,10 +44,10 @@ function RecipesProvider({ children }) {
     setLoading,
     dataDrink,
     setDataDrink,
-    btnMealsStatus,
-    setBtnMealsStatus,
-    btnDrinksStatus,
-    setBtnDrinksStatus,
+    btnMealsToggle,
+    setBtnMealsToggle,
+    btnDrinksToggle,
+    setBtnDrinksToggle,
   };
 
   return (
