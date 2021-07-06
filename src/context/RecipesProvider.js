@@ -13,6 +13,8 @@ function RecipesProvider({ children }) {
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(false);
   const [dataDrink, setDataDrink] = useState({});
+  const [btnMealsStatus, setBtnMealsStatus] = useState('unchecked');
+  const [btnDrinksStatus, setBtnDrinksStatus] = useState('unchecked');
 
   useEffect(() => {
     async function fetchData() {
@@ -42,7 +44,12 @@ function RecipesProvider({ children }) {
     setLoading,
     dataDrink,
     setDataDrink,
+    btnMealsStatus,
+    setBtnMealsStatus,
+    btnDrinksStatus,
+    setBtnDrinksStatus,
   };
+
   return (
     <ContextRecipes.Provider value={ state }>
       { children }
