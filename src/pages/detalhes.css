@@ -17,3 +17,11 @@
   position: fixed;
   width: 100%;
 }
+
+.escondido {
+  display: none;
+}
+
+.aparente {
+  display: flex;
+}

@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
 
 function RecipeDrinksButton({ drinkDetails }) {
+  const history = useHistory();
   let doneRecipes = [];
   let inProgressRecipes = {};
   let isInProgress = false;
@@ -40,6 +42,7 @@ function RecipeDrinksButton({ drinkDetails }) {
       type="button"
       data-testid="start-recipe-btn"
       className="iniciarReceita"
+      onClick={ () => history.push(`/bebidas/${recipeId}/in-progress`) }
     >
       Iniciar Receita
     </button>

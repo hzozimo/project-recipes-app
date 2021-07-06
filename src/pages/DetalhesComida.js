@@ -1,5 +1,6 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import copy from 'clipboard-copy';
 import ContextRecipes from '../context/ContextRecipes';
 import useFetchIdAndRecomendations from '../Hooks/fetchDetailsAndRecomendations';
 import shareIcon from '../images/shareIcon.svg';
@@ -10,6 +11,7 @@ import RecipeMealsButton from '../components/RecipeMealsButton';
 
 function DetalhesComida() {
   const { id } = useParams();
+  const [shared, setShared] = useState('escondido');
   const { foodDetails, recomendations } = useContext(ContextRecipes);
 
   useFetchIdAndRecomendations(id, 'foods');
@@ -84,6 +86,11 @@ function DetalhesComida() {
     );
   };
 
+  const sharing = () => {
+    copy(window.location.href);
+    setShared('aparente');
+  };
+
   return (
     <div>
       { foodDetails.meals
@@ -110,9 +117,16 @@ function DetalhesComida() {
               {foodDetails.meals[0].strTags}
             </h5>
             <div>
-              <img src={ shareIcon } alt="shareIcon" data-testid="share-btn" />
+              <div>
+                <button type="button" onClick={ () => sharing() }>
+                  <img src={ shareIcon } alt="shareIcon" data-testid="share-btn" />
+                </button>
+                <p className={ shared }>Link copiado!</p>
+              </div>
               {' '}
-              <img src={ whiteHeartIcon } alt="fovorited" data-testid="favorite-btn" />
+              <button type="button">
+                <img src={ whiteHeartIcon } alt="fovorited" data-testid="favorite-btn" />
+              </button>
             </div>
             <div>
               <h2> Ingredients </h2>
