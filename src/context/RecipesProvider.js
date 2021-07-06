@@ -14,6 +14,8 @@ function RecipesProvider({ children }) {
   const [loading, setLoading] = useState(false);
   const [dataDrink, setDataDrink] = useState({});
   const [foodDetails, setFoodDetails] = useState({});
+  const [drinkDetails, setDrinkDetails] = useState({});
+  const [recomendations, setRecomendations] = useState({});
 
   useEffect(() => {
     async function fetchData() {
@@ -45,6 +47,10 @@ function RecipesProvider({ children }) {
     setDataDrink,
     foodDetails,
     setFoodDetails,
+    recomendations,
+    setRecomendations,
+    drinkDetails,
+    setDrinkDetails,
   };
   return (
     <ContextRecipes.Provider value={ state }>

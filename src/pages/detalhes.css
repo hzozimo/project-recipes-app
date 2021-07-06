@@ -1,0 +1,16 @@
+.recomendations {
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+  white-space: nowrap;
+  width: 200px;
+}
+
+.recomendationsChild {
+  display: inline-block;
+  width: 200px;
+}
+
+.iniciarReceita {
+  position: fixed;
+}
