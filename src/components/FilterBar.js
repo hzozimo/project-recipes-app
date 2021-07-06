@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import propTypes from 'prop-types';
 import ContextRecipes from '../context/ContextRecipes';
 import { filterMealsBtn, filterDrinksBtn } from '../api/fetchFilterBtn';
-// import useFetchInicialFoods from '../Hooks/fetchInicialFoods';
 import '../App.css';
 
 function FilterBar({ title }) {
