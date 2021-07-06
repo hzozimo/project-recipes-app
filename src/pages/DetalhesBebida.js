@@ -4,7 +4,7 @@ import ContextRecipes from '../context/ContextRecipes';
 import useFetchIdAndRecomendations from '../Hooks/fetchDetailsAndRecomendations';
 import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
-import blackHeartIcon from '../images/blackHeartIcon.svg';
+// import blackHeartIcon from '../images/blackHeartIcon.svg';
 import './detalhes.css';
 
 function DetalhesBebida() {
