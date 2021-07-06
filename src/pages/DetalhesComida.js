@@ -4,7 +4,7 @@ import ContextRecipes from '../context/ContextRecipes';
 import useFetchIdAndRecomendations from '../Hooks/fetchDetailsAndRecomendations';
 import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
-import blackHeartIcon from '../images/blackHeartIcon.svg';
+// import blackHeartIcon from '../images/blackHeartIcon.svg';
 import './detalhes.css';
 
 function DetalhesComida() {
@@ -75,7 +75,7 @@ function DetalhesComida() {
               >
                 <img width="100px" src={ drink.strDrinkThumb } alt={ drink.strDrink } />
                 <p>{ drink.strAlcoholic }</p>
-                <p>{ drink.strDrink }</p>
+                <p data-testid={ `${index}-recomendation-title` }>{ drink.strDrink }</p>
               </div>
             ))}
           </div>)

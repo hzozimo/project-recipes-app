@@ -56,7 +56,7 @@ function DetalhesBebida() {
               >
                 <img width="100px" src={ meal.strMealThumb } alt={ meal.strMeal } />
                 <p>{ meal.strtags }</p>
-                <p>{ meal.strMeal }</p>
+                <p data-testid={ `${index}-recomendation-title` }>{ meal.strMeal }</p>
               </div>
             ))}
           </div>)
