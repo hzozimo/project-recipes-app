@@ -47,21 +47,22 @@ function InProgressComida() {
         { ingredientsFiltered.map((ingredient, index) => (
           (
             <p key={ index } data-testid={ `${index}-ingredient-name-and-measure` }>
-              <input
-                className="thought"
-                id={ `ingredient-${index}` }
-                type="checkbox"
-                value={ ingredient }
-                name={ ingredient }
-                data-testid={ `${index}-ingredient-step` }
-              />
-              <label htmlFor={ `ingredient-${index}` } className="finish">
-                {' '}
-                {ingredient}
-                {' '}
-                {measures[index]}
-                {' '}
-              </label>
+              <div data-testid={ `${index}-ingredient-step` }>
+                <input
+                  className="thought"
+                  id={ `ingredient-${index}` }
+                  type="checkbox"
+                  value={ ingredient }
+                  name={ ingredient }
+                />
+                <label htmlFor={ `ingredient-${index}` } className="finish">
+                  {' '}
+                  {ingredient}
+                  {' '}
+                  {measures[index]}
+                  {' '}
+                </label>
+              </div>
             </p>)
         ))}
       </div>
