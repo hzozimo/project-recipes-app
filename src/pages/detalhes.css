@@ -25,3 +25,8 @@
 .aparente {
   display: flex;
 }
+
+.thought:checked + .finish {
+  text-decoration: line-through;
+}
+

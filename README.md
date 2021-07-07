@@ -1302,6 +1302,7 @@ Verifica se os atributos data-testid estão presentes na tela com suas respectiv
   * Os ingredientes devem possuir o atributo `data-testid=${index}-ingredient-step`, a verificação será feita pelo length do atributo.
   * O elemento de instruções deve possuir o atributo `data-testid="instructions"`;
   * O botão para finalizar a receita deve possuir o atributo `data-testid="finish-recipe-btn"`.
+  
 
   O que será verificado:
   ```
