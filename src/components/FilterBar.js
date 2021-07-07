@@ -1,23 +1,51 @@
 import React, { useContext } from 'react';
 import propTypes from 'prop-types';
 import ContextRecipes from '../context/ContextRecipes';
-import '../App.css';
 import { filterMealsBtn, filterDrinksBtn } from '../api/fetchFilterBtn';
+import '../App.css';
 
 function FilterBar({ title }) {
-  const { setData, setDataDrink } = useContext(ContextRecipes);
+  const {
+    setData,
+    setDataDrink,
+    mealsCategories,
+    drinksCategories,
+    btnMealsToggle,
+    setBtnMealsToggle,
+    btnDrinksToggle,
+    setBtnDrinksToggle,
+  } = useContext(ContextRecipes);
+
   function handlerFilter({ target: { value } }) {
     if (title === 'Comidas') {
-      filterMealsBtn(value)
-        .then((res) => setData(res));
+      if (btnMealsToggle === true) {
+        filterMealsBtn(value)
+          .then((res) => setData(res));
+        setBtnMealsToggle(false);
+      } else {
+        fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=')
+          .then((res) => res.json())
+          .then((res) => {
+            setData(res);
+          });
+        setBtnMealsToggle(true);
+      }
     }
     if (title === 'Bebidas') {
-      filterDrinksBtn(value)
-        .then((res) => setDataDrink(res));
+      if (btnDrinksToggle === true) {
+        filterDrinksBtn(value)
+          .then((res) => setDataDrink(res));
+        setBtnDrinksToggle(false);
+      } else {
+        fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=')
+          .then((res) => res.json())
+          .then((res) => {
+            setDataDrink(res);
+          });
+        setBtnDrinksToggle(true);
+      }
     }
   }
-
-  const { mealsCategories, drinksCategories } = useContext(ContextRecipes);
 
   if (title === 'Comidas') {
     return (

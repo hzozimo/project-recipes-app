@@ -8,6 +8,5 @@ export default async function fetchCategories(type) {
   const FIVE_CATEGORYS = 5;
   const resultsJSON = await fetch(categoriesOptions[tempType]);
   const results = await resultsJSON.json();
-  console.log(results[tempType].slice(0, FIVE_CATEGORYS));
   return results[tempType].slice(0, FIVE_CATEGORYS);
 }

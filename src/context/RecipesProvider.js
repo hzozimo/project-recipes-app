@@ -13,6 +13,8 @@ function RecipesProvider({ children }) {
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(false);
   const [dataDrink, setDataDrink] = useState({});
+  const [btnMealsToggle, setBtnMealsToggle] = useState(true);
+  const [btnDrinksToggle, setBtnDrinksToggle] = useState(true);
   const [foodDetails, setFoodDetails] = useState({});
   const [drinkDetails, setDrinkDetails] = useState({});
   const [recomendations, setRecomendations] = useState({});
@@ -46,6 +48,10 @@ function RecipesProvider({ children }) {
     setLoading,
     dataDrink,
     setDataDrink,
+    btnMealsToggle,
+    setBtnMealsToggle,
+    btnDrinksToggle,
+    setBtnDrinksToggle,
     foodDetails,
     setFoodDetails,
     recomendations,
@@ -55,6 +61,7 @@ function RecipesProvider({ children }) {
     favorited,
     setFavorited,
   };
+
   return (
     <ContextRecipes.Provider value={ state }>
       { children }
