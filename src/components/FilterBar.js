@@ -50,7 +50,13 @@ function FilterBar({ title }) {
   if (title === 'Comidas') {
     return (
       <div className="filterBar">
-        <button type="button" onClick={ handlerFilter }>All</button>
+        <button
+          type="button"
+          data-testid="All-category-filter"
+          onClick={ handlerFilter }
+        >
+          All
+        </button>
         {
           mealsCategories.map((meal, index) => (
             <button
@@ -71,7 +77,13 @@ function FilterBar({ title }) {
   if (title === 'Bebidas') {
     return (
       <div className="filterBar">
-        <button type="button" onClick={ handlerFilter }>All</button>
+        <button
+          type="button"
+          data-testid="All-category-filter"
+          onClick={ handlerFilter }
+        >
+          All
+        </button>
         {
           drinksCategories.map((drink, index) => (
             <button
