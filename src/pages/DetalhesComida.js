@@ -30,6 +30,8 @@ function DetalhesComida() {
       ingredients.push(foodDetails.meals[0][ingredient]);
       measures.push(foodDetails.meals[0][measure]);
     }
+    const ingredientFiltered = ingredients.filter((el) => el !== '' && el !== null);
+    console.log('filtered', ingredientFiltered);
     return (
       <div>
         {ingredients.map((ingredient, index) => (
