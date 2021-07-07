@@ -4,17 +4,20 @@ import copy from 'clipboard-copy';
 import ContextRecipes from '../context/ContextRecipes';
 import useFetchIdAndRecomendations from '../Hooks/fetchDetailsAndRecomendations';
 import shareIcon from '../images/shareIcon.svg';
-import whiteHeartIcon from '../images/whiteHeartIcon.svg';
-// import blackHeartIcon from '../images/blackHeartIcon.svg';
+import FavoriteFood from '../components/FavoriteFood';
+
 import './detalhes.css';
 import RecipeMealsButton from '../components/RecipeMealsButton';
 
 function DetalhesComida() {
   const { id } = useParams();
   const [shared, setShared] = useState('escondido');
-  const { foodDetails, recomendations } = useContext(ContextRecipes);
+  const { foodDetails,
+    recomendations,
+  } = useContext(ContextRecipes);
 
   useFetchIdAndRecomendations(id, 'foods');
+
   console.log('food na pagina de detalhes:', foodDetails);
 
   const ingredientsList = () => {
@@ -124,9 +127,8 @@ function DetalhesComida() {
                 <p className={ shared }>Link copiado!</p>
               </div>
               {' '}
-              <button type="button">
-                <img src={ whiteHeartIcon } alt="fovorited" data-testid="favorite-btn" />
-              </button>
+              <FavoriteFood />
+
             </div>
             <div>
               <h2> Ingredients </h2>

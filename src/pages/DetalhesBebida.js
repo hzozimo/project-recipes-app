@@ -5,14 +5,15 @@ import RecipeDrinksButton from '../components/RecipeDrinksButton';
 import ContextRecipes from '../context/ContextRecipes';
 import useFetchIdAndRecomendations from '../Hooks/fetchDetailsAndRecomendations';
 import shareIcon from '../images/shareIcon.svg';
-import whiteHeartIcon from '../images/whiteHeartIcon.svg';
-// import blackHeartIcon from '../images/blackHeartIcon.svg';
 import './detalhes.css';
+import FavoriteDrink from '../components/FavoriteDrink';
 
 function DetalhesBebida() {
   const { id } = useParams();
   const [shared, setShared] = useState('escondido');
-  const { drinkDetails, recomendations } = useContext(ContextRecipes);
+  const { drinkDetails,
+    recomendations,
+  } = useContext(ContextRecipes);
 
   useFetchIdAndRecomendations(id, 'drinks');
   console.log('drink na pagina de detalhes:', drinkDetails);
@@ -105,9 +106,7 @@ function DetalhesBebida() {
                 <p className={ shared }>Link copiado!</p>
               </div>
               {' '}
-              <button type="button">
-                <img src={ whiteHeartIcon } alt="fovorited" data-testid="favorite-btn" />
-              </button>
+              <FavoriteDrink />
             </div>
             <div>
               <h2> Ingredients </h2>
