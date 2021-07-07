@@ -18,7 +18,7 @@ function FilterBar({ title }) {
 
   function handlerFilter({ target: { value } }) {
     if (title === 'Comidas') {
-      if (btnMealsToggle === true) {
+      if (btnMealsToggle === true && value !== 'All') {
         filterMealsBtn(value)
           .then((res) => setData(res));
         setBtnMealsToggle(false);
@@ -32,7 +32,7 @@ function FilterBar({ title }) {
       }
     }
     if (title === 'Bebidas') {
-      if (btnDrinksToggle === true) {
+      if (btnDrinksToggle === true && value !== 'All') {
         filterDrinksBtn(value)
           .then((res) => setDataDrink(res));
         setBtnDrinksToggle(false);
@@ -50,6 +50,7 @@ function FilterBar({ title }) {
   if (title === 'Comidas') {
     return (
       <div className="filterBar">
+        <button type="button" onClick={ handlerFilter }>All</button>
         {
           mealsCategories.map((meal, index) => (
             <button
@@ -70,6 +71,7 @@ function FilterBar({ title }) {
   if (title === 'Bebidas') {
     return (
       <div className="filterBar">
+        <button type="button" onClick={ handlerFilter }>All</button>
         {
           drinksCategories.map((drink, index) => (
             <button
