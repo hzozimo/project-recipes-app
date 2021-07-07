@@ -4,6 +4,7 @@ import Footer from '../components/Footer';
 import ContextRecipes from '../context/ContextRecipes';
 import useFetchInicialFoods from '../Hooks/fetchInicialFoods';
 import FilterBar from '../components/FilterBar';
+// import { Button } from 'bootstrap';
 
 function Comidas() {
   const DOZE = 12;
