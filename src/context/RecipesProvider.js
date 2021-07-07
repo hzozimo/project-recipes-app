@@ -15,6 +15,10 @@ function RecipesProvider({ children }) {
   const [dataDrink, setDataDrink] = useState({});
   const [btnMealsToggle, setBtnMealsToggle] = useState(true);
   const [btnDrinksToggle, setBtnDrinksToggle] = useState(true);
+  const [foodDetails, setFoodDetails] = useState({});
+  const [drinkDetails, setDrinkDetails] = useState({});
+  const [recomendations, setRecomendations] = useState({});
+  const [favorited, setFavorited] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
@@ -48,6 +52,14 @@ function RecipesProvider({ children }) {
     setBtnMealsToggle,
     btnDrinksToggle,
     setBtnDrinksToggle,
+    foodDetails,
+    setFoodDetails,
+    recomendations,
+    setRecomendations,
+    drinkDetails,
+    setDrinkDetails,
+    favorited,
+    setFavorited,
   };
 
   return (

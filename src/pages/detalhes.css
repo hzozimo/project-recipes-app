@@ -1,0 +1,27 @@
+.recomendations {
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+  white-space: nowrap;
+  width: 200px;
+}
+
+.recomendationsChild {
+  display: inline-block;
+  width: 200px;
+}
+
+.iniciarReceita {
+  background-color: chartreuse;
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+}
+
+.escondido {
+  display: none;
+}
+
+.aparente {
+  display: flex;
+}
