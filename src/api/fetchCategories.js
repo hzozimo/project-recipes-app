@@ -3,13 +3,10 @@ const categoriesOptions = {
   drinks: 'https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list',
 };
 
-async function fetchCategories(type) {
+export default async function fetchCategories(type) {
   const tempType = type;
   const FIVE_CATEGORYS = 5;
   const resultsJSON = await fetch(categoriesOptions[tempType]);
   const results = await resultsJSON.json();
-  console.log(results[tempType].slice(0, FIVE_CATEGORYS));
   return results[tempType].slice(0, FIVE_CATEGORYS);
 }
-
-export default fetchCategories;
