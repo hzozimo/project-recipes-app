@@ -1,9 +1,11 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ContextRecipes from '../context/ContextRecipes';
 import useFetchInicialFoods from '../Hooks/fetchInicialFoods';
 import FilterBar from '../components/FilterBar';
+// import { Button } from 'bootstrap';
 
 function Comidas() {
   const DOZE = 12;
@@ -13,20 +15,24 @@ function Comidas() {
 
   const dataAux = { ...data };
   const { meals } = dataAux;
+  // console.log(meals);
 
   const loadingFunc = () => (<div>..Loading...</div>);
   const dataRender = () => (
     <div>
       { meals && meals.slice(0, DOZE).map((food, index) => (
-        <div data-testid={ `${index}-recipe-card` } key={ food.idMeal }>
-          <p data-testid={ `${index}-card-name` }>{food.strMeal}</p>
-          <img
-            width="200px"
-            data-testid={ `${index}-card-img` }
-            src={ food.strMealThumb }
-            alt={ food.strMeal }
-          />
-        </div>))}
+        <Link to={ `/comidas/${food.idMeal}` } key={ food.idMeal }>
+          <div data-testid={ `${index}-recipe-card` } key={ food.idMeal }>
+            <p data-testid={ `${index}-card-name` }>{food.strMeal}</p>
+            <img
+              width="200px"
+              data-testid={ `${index}-card-img` }
+              src={ food.strMealThumb }
+              alt={ food.strMeal }
+            />
+          </div>
+        </Link>
+      ))}
     </div>);
 
   return (
