@@ -12,10 +12,47 @@ function InProgressBebida() {
   const { id } = useParams();
   const [shared, setShared] = useState('escondido');
   const { drinkDetails,
+    loadInProgressRecipes,
   } = useContext(ContextRecipes);
 
   useFetchIdAndRecomendations(id, 'drinks');
   console.log('drink na pagina de detalhes:', drinkDetails);
+
+  const handleChange = (event) => {
+    if (event.target.checked) {
+      if (localStorage.getItem('inProgressRecipes')) {
+        const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
+        const inProgressRecipesToSave = {
+          ...inProgressRecipes,
+          cocktails: {
+            [id]: [...inProgressRecipes.cocktails[id], event.target.name],
+          },
+        };
+        localStorage
+          .setItem('inProgressRecipes', JSON.stringify(inProgressRecipesToSave));
+      } else {
+        const inProgressRecipesToSave = {
+          cocktails: {
+            [id]: [event.target.name],
+          },
+        };
+        localStorage
+          .setItem('inProgressRecipes', JSON.stringify(inProgressRecipesToSave));
+      }
+    } else {
+      const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
+      const ingredientsDone = inProgressRecipes.cocktails[id];
+      const removindIngredient = ingredientsDone
+        .filter((ingredient) => ingredient !== event.target.name);
+      const inProgressRecipesToSave = {
+        ...inProgressRecipes,
+        cocktails: {
+          [id]: removindIngredient,
+        },
+      };
+      localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipesToSave));
+    }
+  };
 
   const ingredientsList = () => {
     const MAX_INGREDIENTS = 15;
@@ -27,7 +64,16 @@ function InProgressBebida() {
       ingredients.push(drinkDetails.drinks[0][ingredient]);
       measures.push(drinkDetails.drinks[0][measure]);
     }
-    const ingredientsFiltered = ingredients.filter((ingredient) => (ingredient !== '' && ingredient !== null));
+    const ingredientsFiltered = ingredients
+      .filter((ingredient) => (ingredient !== '' && ingredient !== null));
+
+    const verifyIngredient = (ingredient) => {
+      if (loadInProgressRecipes !== null) {
+        return loadInProgressRecipes.cocktails[id].includes(ingredient);
+      }
+      return false;
+    };
+
     return (
       <div>
         {ingredientsFiltered.map((ingredient, index) => (
@@ -40,6 +86,8 @@ function InProgressBebida() {
                   type="checkbox"
                   value={ ingredient }
                   name={ ingredient }
+                  defaultChecked={ verifyIngredient(ingredient) }
+                  onChange={ handleChange }
                 />
                 <label htmlFor={ `ingredient-${index}` } className="finish">
                   {' '}

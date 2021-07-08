@@ -15,18 +15,53 @@ import useFetchIdAndRecomendations from '../Hooks/fetchDetailsAndRecomendations'
 import shareIcon from '../images/shareIcon.svg';
 import FavoriteFood from '../components/FavoriteFood';
 import './detalhes.css';
-import RecipeMealsButton from '../components/RecipeMealsButton';
 
 function InProgressComida() {
   const { id } = useParams();
   const [shared, setShared] = useState('escondido');
   const { foodDetails,
-    recomendations,
+    loadInProgressRecipes,
   } = useContext(ContextRecipes);
 
   useFetchIdAndRecomendations(id, 'foods');
 
   console.log('food na pagina de detalhes:', foodDetails);
+
+  const handleChange = (event) => {
+    if (event.target.checked) {
+      if (localStorage.getItem('inProgressRecipes')) {
+        const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
+        const inProgressRecipesToSave = {
+          ...inProgressRecipes,
+          meals: {
+            [id]: [...inProgressRecipes.meals[id], event.target.name],
+          },
+        };
+        localStorage
+          .setItem('inProgressRecipes', JSON.stringify(inProgressRecipesToSave));
+      } else {
+        const inProgressRecipesToSave = {
+          meals: {
+            [id]: [event.target.name],
+          },
+        };
+        localStorage
+          .setItem('inProgressRecipes', JSON.stringify(inProgressRecipesToSave));
+      }
+    } else {
+      const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
+      const ingredientsDone = inProgressRecipes.meals[id];
+      const removindIngredient = ingredientsDone
+        .filter((ingredient) => ingredient !== event.target.name);
+      const inProgressRecipesToSave = {
+        ...inProgressRecipes,
+        meals: {
+          [id]: removindIngredient,
+        },
+      };
+      localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipesToSave));
+    }
+  };
 
   const ingredientsList = () => {
     const MAX_INGREDIENTS = 20;
@@ -39,8 +74,16 @@ function InProgressComida() {
       measures.push(foodDetails.meals[0][measure]);
     }
 
-    const ingredientsFiltered = ingredients.filter((ingredient) => (ingredient !== '' && ingredient !== null));
+    const ingredientsFiltered = ingredients
+      .filter((ingredient) => (ingredient !== '' && ingredient !== null));
     console.log('toaqui', ingredientsFiltered);
+
+    const verifyIngredient = (ingredient) => {
+      if (loadInProgressRecipes !== null) {
+        return loadInProgressRecipes.meals[id].includes(ingredient);
+      }
+      return false;
+    };
 
     return (
       <div>
@@ -54,6 +97,8 @@ function InProgressComida() {
                   type="checkbox"
                   value={ ingredient }
                   name={ ingredient }
+                  defaultChecked={ verifyIngredient(ingredient) }
+                  onChange={ handleChange }
                 />
                 <label htmlFor={ `ingredient-${index}` } className="finish">
                   {' '}

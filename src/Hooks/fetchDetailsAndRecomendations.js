@@ -9,13 +9,14 @@ const useFetchIdAndRecomendations = (id, type) => {
     setRecomendations,
     setDrinkDetails,
     favorited,
-    setFavorited } = useContext(ContextRecipes);
+    setFavorited,
+    setLoadInProgressRecipes } = useContext(ContextRecipes);
 
   const fetchIdAndRecomendations = () => {
+    setLoadInProgressRecipes(JSON.parse(localStorage.getItem('inProgressRecipes')));
     setFavorited(false);
     if (type === 'foods') {
       const URL = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`;
-      console.log('URL', URL);
       fetch(URL)
         .then((res) => res.json())
         .then((res) => {
@@ -39,7 +40,6 @@ const useFetchIdAndRecomendations = (id, type) => {
     }
     if (type === 'drinks') {
       const URL = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`;
-      console.log('URL', URL);
       fetch(URL)
         .then((res) => res.json())
         .then((res) => {
@@ -63,9 +63,7 @@ const useFetchIdAndRecomendations = (id, type) => {
       }
     }
   };
-
   useEffect(fetchIdAndRecomendations, []);
-
   return [food, drink, recomendationsState, favorited];
 };
 
