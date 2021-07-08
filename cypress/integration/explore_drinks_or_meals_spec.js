@@ -2,7 +2,7 @@
 
 const fetchMock = require('../mocks/fetch');
 
-describe('70 - Implemente os elementos da tela de explorar bebidas ou comidas respeitando os atributos descritos no protótipo', () => {
+describe.only('70 - Implemente os elementos da tela de explorar bebidas ou comidas respeitando os atributos descritos no protótipo', () => {
   it('Tem os data-testids corretos para a tela de explorar comidas', () => {
     cy.visit('http://localhost:3000/explorar/comidas');
 
