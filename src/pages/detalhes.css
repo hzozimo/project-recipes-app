@@ -25,3 +25,12 @@
 .aparente {
   display: flex;
 }
+
+.thought:checked + .finish {
+  text-decoration: line-through;
+}
+
+/* .finish > .thought:checked {
+  text-decoration: line-through;
+} */
+
