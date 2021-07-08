@@ -115,7 +115,10 @@ function InProgressComida() {
   };
 
   const sharing = () => {
-    copy(window.location.href);
+    const numberOfCharactersToRemove = '/in-progress'.length;
+    const url = window.location.href;
+    const link = url.substring(0, url.length - numberOfCharactersToRemove);
+    copy(link);
     setShared('aparente');
   };
 
