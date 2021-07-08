@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import copy from 'clipboard-copy';
 import ContextRecipes from '../context/ContextRecipes';
 import useFetchIdAndRecomendations from '../Hooks/fetchDetailsAndRecomendations';
@@ -9,6 +9,7 @@ import './detalhes.css';
 import verifyIngredient from '../Helpers/verifyIngredient';
 
 function InProgressBebida() {
+  const history = useHistory();
   const { id } = useParams();
   const [shared, setShared] = useState('escondido');
   const [canFinalize, setCanFinalize] = useState(true);
@@ -164,6 +165,7 @@ function InProgressBebida() {
               type="button"
               data-testid="finish-recipe-btn"
               disabled={ canFinalize }
+              onClick={ () => history.push('/receitas-feitas') }
             >
               Finalizar Receita
             </button>
