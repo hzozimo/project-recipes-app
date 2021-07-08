@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ContextRecipes from '../context/ContextRecipes';
@@ -19,15 +20,18 @@ function Bebidas() {
   const dataRender = () => (
     <div>
       { drinks && drinks.slice(0, DOZE).map((drink, index) => (
-        <div data-testid={ `${index}-recipe-card` } key={ drink.idDrink }>
-          <p data-testid={ `${index}-card-name` }>{drink.strDrink}</p>
-          <img
-            width="200px"
-            data-testid={ `${index}-card-img` }
-            src={ drink.strDrinkThumb }
-            alt={ drink.strDrink }
-          />
-        </div>))}
+        <Link to={ `/bebidas/${drink.idDrink}` } key={ drink.idDrink }>
+          <div data-testid={ `${index}-recipe-card` } key={ drink.idDrink }>
+            <p data-testid={ `${index}-card-name` }>{drink.strDrink}</p>
+            <img
+              width="200px"
+              data-testid={ `${index}-card-img` }
+              src={ drink.strDrinkThumb }
+              alt={ drink.strDrink }
+            />
+          </div>
+        </Link>
+      ))}
     </div>);
 
   return (

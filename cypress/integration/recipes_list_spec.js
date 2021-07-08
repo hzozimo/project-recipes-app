@@ -309,7 +309,7 @@ describe('30 - Implemente o filtro de categoria para que apenas um seja selecion
   });
 });
 
-describe.only('31 - Desenvolva o filtro de categorias com a opção de filtrar por todas as categorias', () => {
+describe('31 - Desenvolva o filtro de categorias com a opção de filtrar por todas as categorias', () => {
   it('Caso as receitas sejam de comida deve existir a opção de filtrar por todas as categorias', () => {
     cy.visit('http://localhost:3000/comidas', {
       onBeforeLoad(win) {
