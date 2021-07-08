@@ -6,6 +6,7 @@ import useFetchIdAndRecomendations from '../Hooks/fetchDetailsAndRecomendations'
 import shareIcon from '../images/shareIcon.svg';
 import FavoriteFood from '../components/FavoriteFood';
 import './detalhes.css';
+import verifyIngredient from '../Helpers/verifyIngredient';
 
 function InProgressComida() {
   const { id } = useParams();
@@ -26,7 +27,8 @@ function InProgressComida() {
 
   const handleChange = (event) => {
     if (event.target.checked) {
-      if (localStorage.getItem('inProgressRecipes')) {
+      if (localStorage.getItem('inProgressRecipes')
+          && localStorage.getItem('inProgressRecipes').meals) {
         const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
         const inProgressRecipesToSave = {
           ...inProgressRecipes,
@@ -74,13 +76,6 @@ function InProgressComida() {
     const ingredientsFiltered = ingredients
       .filter((ingredient) => (ingredient !== '' && ingredient !== null));
 
-    const verifyIngredient = (ingredient) => {
-      if (loadInProgressRecipes !== null && loadInProgressRecipes.meals !== undefined) {
-        return loadInProgressRecipes.meals[id].includes(ingredient);
-      }
-      return false;
-    };
-
     return (
       <div>
         { ingredientsFiltered.map((ingredient, index) => (
@@ -93,7 +88,9 @@ function InProgressComida() {
                   type="checkbox"
                   value={ ingredient }
                   name={ ingredient }
-                  defaultChecked={ verifyIngredient(ingredient) }
+                  defaultChecked={
+                    verifyIngredient(ingredient, loadInProgressRecipes, id, 'meals')
+                  }
                   onChange={ (event) => handleChange(event) }
                 />
                 <label htmlFor={ `ingredient-${index}` } className="finish">
