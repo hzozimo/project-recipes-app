@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import copy from 'clipboard-copy';
-import RecipeDrinksButton from '../components/RecipeDrinksButton';
 import ContextRecipes from '../context/ContextRecipes';
 import useFetchIdAndRecomendations from '../Hooks/fetchDetailsAndRecomendations';
 import shareIcon from '../images/shareIcon.svg';
@@ -11,12 +10,19 @@ import './detalhes.css';
 function InProgressBebida() {
   const { id } = useParams();
   const [shared, setShared] = useState('escondido');
+  const [canFinalize, setCanFinalize] = useState(true);
   const { drinkDetails,
     loadInProgressRecipes,
   } = useContext(ContextRecipes);
 
   useFetchIdAndRecomendations(id, 'drinks');
-  console.log('drink na pagina de detalhes:', drinkDetails);
+
+  const isDisabled = () => {
+    const allCheckBoxes = document.getElementsByClassName('thought');
+    const allCheckBoxesArray = [...allCheckBoxes];
+    const result = allCheckBoxesArray.every((el) => el.checked === true);
+    setCanFinalize(!result);
+  };
 
   const handleChange = (event) => {
     if (event.target.checked) {
@@ -52,6 +58,7 @@ function InProgressBebida() {
       };
       localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipesToSave));
     }
+    isDisabled();
   };
 
   const ingredientsList = () => {
@@ -68,7 +75,7 @@ function InProgressBebida() {
       .filter((ingredient) => (ingredient !== '' && ingredient !== null));
 
     const verifyIngredient = (ingredient) => {
-      if (loadInProgressRecipes !== null) {
+      if (loadInProgressRecipes !== null && loadInProgressRecipes.cocktails !== undefined) {
         return loadInProgressRecipes.cocktails[id].includes(ingredient);
       }
       return false;
@@ -76,7 +83,7 @@ function InProgressBebida() {
 
     return (
       <div>
-        {ingredientsFiltered.map((ingredient, index) => (
+        { ingredientsFiltered.map((ingredient, index) => (
           (
             <p key={ index } data-testid={ `${index}-ingredient-name-and-measure` }>
               <div data-testid={ `${index}-ingredient-step` }>
@@ -87,7 +94,7 @@ function InProgressBebida() {
                   value={ ingredient }
                   name={ ingredient }
                   defaultChecked={ verifyIngredient(ingredient) }
-                  onChange={ handleChange }
+                  onChange={ (event) => handleChange(event) }
                 />
                 <label htmlFor={ `ingredient-${index}` } className="finish">
                   {' '}
@@ -127,12 +134,12 @@ function InProgressBebida() {
               {drinkDetails.drinks[0].strDrink}
               {' '}
             </h1>
-            <h4>
+            <h4 data-testid="recipe-category">
               {' '}
               { drinkDetails.drinks[0].strCategory }
               {' '}
             </h4>
-            <h5 data-testid="recipe-category">
+            <h5>
               {' '}
               {drinkDetails.drinks[0].strAlcoholic}
             </h5>
@@ -156,8 +163,11 @@ function InProgressBebida() {
               { drinkDetails.drinks[0].strInstructions }
               {' '}
             </p>
-            <RecipeDrinksButton drinkDetails={ drinkDetails } />
-            <button type="button" data-testid="finish-recipe-btn">
+            <button
+              type="button"
+              data-testid="finish-recipe-btn"
+              disabled={ canFinalize }
+            >
               Finalizar Receita
             </button>
           </div>)

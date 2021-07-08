@@ -1,12 +1,3 @@
-// * A foto deve possuir o atributo `data-testid="recipe-photo"`;
-// * O título deve possuir o atributo `data-testid="recipe-title"`;
-// * O botão de compartilhar deve possuir o atributo `data-testid="share-btn"`;
-// * O botão de favoritar deve possuir o atributo `data-testid="favorite-btn"`;
-// * O texto da categoria deve possuir o atributo `data-testid="recipe-category"`;
-// * Os ingredientes devem possuir o atributo `data-testid=${index}-ingredient-step`, a verificação será feita pelo length do atributo.
-// * O elemento de instruções deve possuir o atributo `data-testid="instructions"`;
-// * O botão para finalizar a receita deve possuir o atributo `data-testid="finish-recipe-btn"`.
-
 import React, { useContext, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import copy from 'clipboard-copy';
@@ -19,13 +10,19 @@ import './detalhes.css';
 function InProgressComida() {
   const { id } = useParams();
   const [shared, setShared] = useState('escondido');
+  const [canFinalize, setCanFinalize] = useState(true);
   const { foodDetails,
     loadInProgressRecipes,
   } = useContext(ContextRecipes);
 
   useFetchIdAndRecomendations(id, 'foods');
 
-  console.log('food na pagina de detalhes:', foodDetails);
+  const isDisabled = () => {
+    const allCheckBoxes = document.getElementsByClassName('thought');
+    const allCheckBoxesArray = [...allCheckBoxes];
+    const result = allCheckBoxesArray.every((el) => el.checked === true);
+    setCanFinalize(!result);
+  };
 
   const handleChange = (event) => {
     if (event.target.checked) {
@@ -61,6 +58,7 @@ function InProgressComida() {
       };
       localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipesToSave));
     }
+    isDisabled();
   };
 
   const ingredientsList = () => {
@@ -73,13 +71,11 @@ function InProgressComida() {
       ingredients.push(foodDetails.meals[0][ingredient]);
       measures.push(foodDetails.meals[0][measure]);
     }
-
     const ingredientsFiltered = ingredients
       .filter((ingredient) => (ingredient !== '' && ingredient !== null));
-    console.log('toaqui', ingredientsFiltered);
 
     const verifyIngredient = (ingredient) => {
-      if (loadInProgressRecipes !== null) {
+      if (loadInProgressRecipes !== null && loadInProgressRecipes.meals !== undefined) {
         return loadInProgressRecipes.meals[id].includes(ingredient);
       }
       return false;
@@ -98,7 +94,7 @@ function InProgressComida() {
                   value={ ingredient }
                   name={ ingredient }
                   defaultChecked={ verifyIngredient(ingredient) }
-                  onChange={ handleChange }
+                  onChange={ (event) => handleChange(event) }
                 />
                 <label htmlFor={ `ingredient-${index}` } className="finish">
                   {' '}
@@ -156,7 +152,6 @@ function InProgressComida() {
               </div>
               {' '}
               <FavoriteFood />
-
             </div>
             <div>
               <h2> Ingredients </h2>
@@ -168,7 +163,11 @@ function InProgressComida() {
               { foodDetails.meals[0].strInstructions }
               {' '}
             </p>
-            <button type="button" data-testid="finish-recipe-btn">
+            <button
+              type="button"
+              data-testid="finish-recipe-btn"
+              disabled={ canFinalize }
+            >
               Finalizar Receita
             </button>
           </div>)
