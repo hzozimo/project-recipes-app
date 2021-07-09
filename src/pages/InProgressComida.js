@@ -28,8 +28,7 @@ function InProgressComida() {
 
   const handleChange = (event) => {
     if (event.target.checked) {
-      if (localStorage.getItem('inProgressRecipes')
-          && localStorage.getItem('inProgressRecipes').meals) {
+      if (localStorage.getItem('inProgressRecipes')) {
         const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
         const inProgressRecipesToSave = {
           ...inProgressRecipes,

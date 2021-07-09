@@ -32,6 +32,7 @@ function DetalhesComida() {
     }
     const ingredientsFiltered = ingredients
       .filter((ingredient) => (ingredient !== '' && ingredient !== null));
+    console.log('filtered', ingredientsFiltered);
     return (
       <div>
         {ingredientsFiltered.map((ingredient, index) => (
