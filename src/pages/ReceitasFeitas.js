@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import copy from 'clipboard-copy';
+import { useHistory, Link } from 'react-router-dom';
 import Header from '../components/Header';
 import shareIcon from '../images/shareIcon.svg';
 
 function ReceitasFeitas() {
+  const history = useHistory();
   ReceitasFeitas.displayName = 'Receitas Feitas';
   const [typeToRender, setTypeToRender] = useState('All');
   const [shared, setShared] = useState('escondido');
@@ -48,45 +50,69 @@ function ReceitasFeitas() {
     setShared('aparente');
   };
 
-  const doneRecipesExists = (recipesToRender) => (
-    <div>
-      {recipesToRender.map((recipe, index) => (
-        <div key={ recipe.id }>
-          <img
-            src={ recipe.image }
-            alt={ recipe.name }
-            data-testid={ `${index}-horizontal-image` }
-          />
-          <p
-            data-testid={ `${index}-horizontal-top-text` }
-          >
-            {`${recipe.area} - ${recipe.category}`}
-          </p>
-          <button type="button" onClick={ () => sharing(recipe.type, recipe.id) }>
-            <img
-              src={ shareIcon }
-              alt="shareIcon"
-              data-testid={ `${index}-horizontal-share-btn` }
-            />
-          </button>
-          <p className={ shared }>Link copiado!</p>
-          <p data-testid={ `${index}-horizontal-name` }>{recipe.name}</p>
-          <p data-testid={ `${index}-horizontal-done-date` }>{recipe.doneDate}</p>
-          <p>
-            {recipe.tags.map((tag, indexIn) => (
-              <div
-                key={ indexIn }
-                data-testid={ `${index}-${tag}-horizontal-tag` }
-              >
-                {tag}
-              </div>
-            ))}
+  const doneRecipesExists = (recipesToRender) => {
+    const alterURL = {
+      comida: 'comidas',
+      bebida: 'bebidas',
+    };
+    return (
+      <div>
+        {recipesToRender.map((recipe, index) => (
+          <div key={ recipe.id }>
+            <Link
+              to={ `/${alterURL[recipe.type]}/${recipe.id}` }
+            >
+              <img
+                width="300px"
+                src={ recipe.image }
+                alt={ recipe.name }
+                data-testid={ `${index}-horizontal-image` }
+              />
+            </Link>
+            {recipe.type === 'comida'
+              ? (
+                <p
+                  data-testid={ `${index}-horizontal-top-text` }
+                >
+                  {`${recipe.area} - ${recipe.category}`}
+                </p>)
+              : (
+                <p
+                  data-testid={ `${index}-horizontal-top-text` }
+                >
+                  {`${recipe.alcoholicOrNot}`}
+                </p>)}
+            <button type="button" onClick={ () => sharing(recipe.type, recipe.id) }>
+              <img
+                src={ shareIcon }
+                alt="shareIcon"
+                data-testid={ `${index}-horizontal-share-btn` }
+              />
+            </button>
+            <p className={ shared }>Link copiado!</p>
+            <Link
+              to={ `/${alterURL[recipe.type]}/${recipe.id}` }
+              data-testid={ `${index}-horizontal-name` }
+            >
+              {recipe.name}
+            </Link>
+            <p data-testid={ `${index}-horizontal-done-date` }>{recipe.doneDate}</p>
+            <p>
+              {recipe.tags.map((tag, indexIn) => (
+                <div
+                  key={ indexIn }
+                  data-testid={ `${index}-${tag}-horizontal-tag` }
+                >
+                  {tag}
+                </div>
+              ))}
 
-          </p>
-        </div>
-      ))}
-    </div>
-  );
+            </p>
+          </div>
+        ))}
+      </div>
+    );
+  };
 
   const renderDoneRecipes = () => {
     if (localStorage.getItem('doneRecipes')) {
