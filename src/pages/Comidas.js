@@ -21,17 +21,6 @@ function Comidas() {
   const dataRender = () => (
     <div>
       { meals && meals.slice(0, DOZE).map((food, index) => (
-<<<<<<< HEAD
-        <div data-testid={ `${index}-recipe-card` } key={ food.idMeal }>
-          <p data-testid={ `${index}-card-name` }>{food.strMeal}</p>
-          <img
-            width="200px"
-            data-testid={ `${index}-card-img` }
-            src={ food.strMealThumb }
-            alt={ food.strMeal }
-          />
-        </div>))}
-=======
         <Link to={ `/comidas/${food.idMeal}` } key={ food.idMeal }>
           <div data-testid={ `${index}-recipe-card` } key={ food.idMeal }>
             <p data-testid={ `${index}-card-name` }>{food.strMeal}</p>
@@ -44,7 +33,6 @@ function Comidas() {
           </div>
         </Link>
       ))}
->>>>>>> d1f9b4d1a67e5359b454382b26558a34ad13ff15
     </div>);
 
   return (
