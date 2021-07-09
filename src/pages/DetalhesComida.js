@@ -30,13 +30,9 @@ function DetalhesComida() {
       ingredients.push(foodDetails.meals[0][ingredient]);
       measures.push(foodDetails.meals[0][measure]);
     }
-<<<<<<< HEAD
-    const ingredientFiltered = ingredients.filter((el) => el !== '' && el !== null);
-    console.log('filtered', ingredientFiltered);
-=======
     const ingredientsFiltered = ingredients
       .filter((ingredient) => (ingredient !== '' && ingredient !== null));
->>>>>>> ec04afb4ab34a44e177982153747047f9c9ea51a
+    console.log('filtered', ingredientsFiltered);
     return (
       <div>
         {ingredientsFiltered.map((ingredient, index) => (
