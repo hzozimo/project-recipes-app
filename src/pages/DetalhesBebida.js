@@ -28,19 +28,20 @@ function DetalhesBebida() {
       ingredients.push(drinkDetails.drinks[0][ingredient]);
       measures.push(drinkDetails.drinks[0][measure]);
     }
+    const ingredientsFiltered = ingredients
+      .filter((ingredient) => (ingredient !== '' && ingredient !== null));
     return (
       <div>
-        {ingredients.map((ingredient, index) => (
-          (ingredient !== '' || ingredient !== null)
-            ? (
-              <p data-testid={ `${index}-ingredient-name-and-measure` }>
-                {' '}
-                {ingredient}
-                {' '}
-                {measures[index]}
-                {' '}
-              </p>)
-            : false))}
+        {ingredientsFiltered.map((ingredient, index) => (
+          (
+            <p key={ index } data-testid={ `${index}-ingredient-name-and-measure` }>
+              {' '}
+              {ingredient}
+              {' '}
+              {measures[index]}
+              {' '}
+            </p>)
+        ))}
       </div>
     );
   };
