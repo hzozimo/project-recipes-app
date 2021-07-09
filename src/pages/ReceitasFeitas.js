@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import copy from 'clipboard-copy';
-import { useHistory, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import shareIcon from '../images/shareIcon.svg';
 
 function ReceitasFeitas() {
-  const history = useHistory();
   ReceitasFeitas.displayName = 'Receitas Feitas';
   const [typeToRender, setTypeToRender] = useState('All');
   const [shared, setShared] = useState('escondido');
