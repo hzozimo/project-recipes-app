@@ -18,13 +18,13 @@ function IngredientesComidas() {
       <div>
         { meals && meals.slice(0, DOZE).map((ingredient, index) => (
           <div data-testid={ `${index}-ingredient-card` } key={ ingredient.idIngredient }>
-            <p data-testid={ `${index}-card-name` }>{ingredient.strIngredient}</p>
             <img
               width="200px"
               data-testid={ `${index}-card-img` }
-              src={ `https://www.themealdb.com/images/ingredients/${ingredient.strIngredient}.png` }
+              src={ `https://www.themealdb.com/images/ingredients/${ingredient.strIngredient}-Small.png` }
               alt={ ingredient.strIngredient }
             />
+            <p data-testid={ `${index}-card-name` }>{ingredient.strIngredient}</p>
           </div>
         ))}
       </div>

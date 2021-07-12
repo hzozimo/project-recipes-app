@@ -18,13 +18,13 @@ function IngredientesBebidas() {
       <div>
         { drinks && drinks.slice(0, DOZE).map((drink, index) => (
           <div data-testid={ `${index}-ingredient-card` } key={ index }>
-            <p data-testid={ `${index}-card-name` }>{drink.strIngredient1}</p>
             <img
               width="200px"
               data-testid={ `${index}-card-img` }
-              src={ `https://www.thecocktaildb.com/images/ingredients/${drink.strIngredient1}.png` }
+              src={ `https://www.thecocktaildb.com/images/ingredients/${drink.strIngredient1}-Small.png` }
               alt={ drink.strIngredient1 }
             />
+            <p data-testid={ `${index}-card-name` }>{drink.strIngredient1}</p>
           </div>
         ))}
       </div>
