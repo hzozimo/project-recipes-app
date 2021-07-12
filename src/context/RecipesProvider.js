@@ -13,14 +13,17 @@ function RecipesProvider({ children }) {
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(false);
   const [dataDrink, setDataDrink] = useState({});
-  // const [btnMealsToggle, setBtnMealsToggle] = useState(true);
-  // const [btnDrinksToggle, setBtnDrinksToggle] = useState(true);
   const [foodDetails, setFoodDetails] = useState({});
   const [drinkDetails, setDrinkDetails] = useState({});
   const [recomendations, setRecomendations] = useState({});
   const [favorited, setFavorited] = useState(false);
-  const [loadInProgressRecipes,
-    setLoadInProgressRecipes] = useState({ cocktails: [], meals: [] });
+  const [loadInProgressRecipes, setLoadInProgressRecipes] = useState({
+    cocktails:
+    [],
+    meals: [],
+  });
+  const [foodIngredients, setFoodIngredients] = useState({});
+  const [drinkIngredients, setDrinkIngredients] = useState({});
 
   useEffect(() => {
     async function fetchData() {
@@ -50,10 +53,6 @@ function RecipesProvider({ children }) {
     setLoading,
     dataDrink,
     setDataDrink,
-    // btnMealsToggle,
-    // setBtnMealsToggle,
-    // btnDrinksToggle,
-    // setBtnDrinksToggle,
     foodDetails,
     setFoodDetails,
     recomendations,
@@ -63,7 +62,12 @@ function RecipesProvider({ children }) {
     favorited,
     setFavorited,
     loadInProgressRecipes,
-    setLoadInProgressRecipes };
+    setLoadInProgressRecipes,
+    foodIngredients,
+    setFoodIngredients,
+    drinkIngredients,
+    setDrinkIngredients,
+  };
 
   return (
     <ContextRecipes.Provider value={ state }>
