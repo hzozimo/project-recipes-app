@@ -11,8 +11,8 @@ function RecipesProvider({ children }) {
   const [currentFoodIngredients, setCurrentFoodIngredients] = useState([]);
   const [mainIngredient, setMain] = useState('');
   const [data, setData] = useState({});
-  const [loading, setLoading] = useState(false);
   const [dataDrink, setDataDrink] = useState({});
+  const [loading, setLoading] = useState(false);
   const [foodDetails, setFoodDetails] = useState({});
   const [drinkDetails, setDrinkDetails] = useState({});
   const [recomendations, setRecomendations] = useState({});
@@ -24,6 +24,7 @@ function RecipesProvider({ children }) {
   });
   const [foodIngredients, setFoodIngredients] = useState({});
   const [drinkIngredients, setDrinkIngredients] = useState({});
+  const [currentValue, setCurrentValue] = useState(null);
 
   useEffect(() => {
     async function fetchData() {
@@ -67,6 +68,8 @@ function RecipesProvider({ children }) {
     setFoodIngredients,
     drinkIngredients,
     setDrinkIngredients,
+    currentValue,
+    setCurrentValue,
   };
 
   return (

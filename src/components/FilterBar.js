@@ -1,9 +1,8 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import propTypes from 'prop-types';
 import ContextRecipes from '../context/ContextRecipes';
 import { filterMealsBtn, filterDrinksBtn } from '../api/fetchFilterBtn';
 import '../App.css';
-// import getAllRecipes from '../service/FoodDrinksRequest';
 
 function FilterBar({ title }) {
   const {
@@ -11,13 +10,20 @@ function FilterBar({ title }) {
     setDataDrink,
     mealsCategories,
     drinksCategories,
-    // btnMealsToggle,
-    // setBtnMealsToggle,
-    // btnDrinksToggle,
-    // setBtnDrinksToggle,
+    currentValue,
+    setCurrentValue,
   } = useContext(ContextRecipes);
 
-  const [currentValue, setCurrentValue] = useState();
+  useEffect(() => {
+    if (title === 'Comidas' && currentValue !== null) {
+      filterMealsBtn(currentValue)
+        .then((res) => setData(res));
+    }
+    if (title === 'Bebidas' && currentValue !== null) {
+      filterDrinksBtn(currentValue)
+        .then((res) => setDataDrink(res));
+    }
+  }, []);
 
   function handleAllMeals() {
     fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=')
@@ -40,7 +46,6 @@ function FilterBar({ title }) {
       if (value !== currentValue) {
         filterMealsBtn(value)
           .then((res) => setData(res));
-        // setBtnMealsToggle(false);
         setCurrentValue(value);
       } else {
         fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=')
@@ -48,7 +53,6 @@ function FilterBar({ title }) {
           .then((res) => {
             setData(res);
           });
-        // setBtnMealsToggle(true);
         setCurrentValue(null);
       }
     }
@@ -74,7 +78,7 @@ function FilterBar({ title }) {
         <button
           type="button"
           data-testid="All-category-filter"
-          onClick={ handleAllMeals }
+          onClick={ () => handleAllMeals() }
         >
           All
         </button>
@@ -89,7 +93,8 @@ function FilterBar({ title }) {
               onClick={ handlerFilter }
             >
               {meal.strCategory}
-            </button>))
+            </button>
+          ))
         }
       </div>
     );
@@ -116,7 +121,8 @@ function FilterBar({ title }) {
               onClick={ handlerFilter }
             >
               {drink.strCategory}
-            </button>))
+            </button>
+          ))
         }
       </div>
     );

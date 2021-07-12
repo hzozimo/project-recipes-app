@@ -3,9 +3,10 @@ import ContextRecipes from '../context/ContextRecipes';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import useFetchDrinksIngredients from '../Hooks/fetchDrinkIngredients';
+// import handlerFilter from '../Helpers/handleFilter';
 
 function IngredientesBebidas() {
-  IngredientesBebidas.displayName = 'Explorar Ingredientes';
+  IngredientesBebidas.displayName = 'Explorar Ingredientes: Bebidas';
   const DOZE = 12;
   const { drinkIngredients } = useContext(ContextRecipes);
   useFetchDrinksIngredients();
