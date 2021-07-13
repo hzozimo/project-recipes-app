@@ -14,6 +14,7 @@ import InProgressBebidas from './InProgressBebidas';
 import inProgressComida from './InProgressComida';
 import ReceitasFeitas from './ReceitasFeitas';
 import ReceitasFavoritas from './ReceitasFavoritas';
+import NotFound from './NotFound';
 
 export { Comidas };
 export { Bebidas };
@@ -31,3 +32,4 @@ export { InProgressBebidas };
 export { inProgressComida };
 export { ReceitasFeitas };
 export { ReceitasFavoritas };
+export { NotFound };
