@@ -84,3 +84,21 @@
   height: 20px;
   margin: 2px;
 }
+
+.lupa {
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+}
+
+.color-secondary {
+  color:yellow;
+  background-color: #ca6510;
+  text-align: center;
+  text-decoration: none;
+}
+
+

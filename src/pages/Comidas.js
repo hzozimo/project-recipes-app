@@ -29,7 +29,7 @@ function Comidas() {
             key={ food.idMeal }
           >
             <p
-              className="text-uppercase badge bg-primary "
+              className="color-secondary"
               data-testid={ `${index}-card-name` }
             >
               {food.strMeal}

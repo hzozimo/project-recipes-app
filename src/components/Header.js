@@ -9,6 +9,7 @@ function Header({ title }) {
   const [searchForm, setSearchForm] = useState(false);
   const renderSearchImage = () => (
     <button
+      className="lupa"
       type="button"
       onClick={ () => setSearchForm(!searchForm) }
     >
