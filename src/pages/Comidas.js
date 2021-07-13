@@ -15,7 +15,6 @@ function Comidas() {
 
   const dataAux = { ...data };
   const { meals } = dataAux;
-  // console.log(meals);
 
   const loadingFunc = () => (<div>..Loading...</div>);
   const dataRender = () => (
@@ -38,7 +37,6 @@ function Comidas() {
   return (
     <div>
       <Header title={ Comidas.displayName } />
-      {/* <h1>Comidas</h1> */}
       <FilterBar title={ Comidas.displayName } />
       <div>
         {!data.meals ? loadingFunc() : dataRender()}
