@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { Spinner } from 'react-bootstrap';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ContextRecipes from '../context/ContextRecipes';
@@ -16,7 +17,11 @@ function Comidas() {
   const { meals } = dataAux;
   // console.log(meals);
 
-  const loadingFunc = () => (<div>..Loading...</div>);
+  const loadingFunc = () => (
+    <div>
+      <Spinner animation="border" size="sm" />
+    </div>
+  );
   const dataRender = () => (
     <div className="container-fluid d-flex flex-wrap justify-content-around">
       { meals && meals.slice(0, DOZE).map((food, index) => (
