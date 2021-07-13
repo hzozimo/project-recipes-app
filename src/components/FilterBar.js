@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
 import ContextRecipes from '../context/ContextRecipes';
 import { filterMealsBtn, filterDrinksBtn } from '../api/fetchFilterBtn';
-import '../App.css';
+// import '../App.css';
 // import getAllRecipes from '../service/FoodDrinksRequest';
 
 function FilterBar({ title }) {
@@ -73,7 +73,7 @@ function FilterBar({ title }) {
     return (
       <div>
         <Button
-          className="btn btn-dark btn-sm m-3 p-3"
+          className="btn btn-dark btn-sm m-1 p-1"
           type="button"
           data-testid="All-category-filter"
           onClick={ handleAllMeals }
@@ -85,7 +85,7 @@ function FilterBar({ title }) {
             <Button
               data-testid={ `${meal.strCategory}-category-filter` }
               value={ `${meal.strCategory}` }
-              className="btn btn-dark btn-sm m-3 p-3"
+              className="btn btn-dark btn-sm m-1 p-1"
               type="button"
               key={ index }
               onClick={ handlerFilter }
@@ -99,9 +99,9 @@ function FilterBar({ title }) {
 
   if (title === 'Bebidas') {
     return (
-      <div>
+      <section>
         <Button
-          className="btn btn-dark btn-sm m-3 p-3"
+          className="btn btn-dark btn-sm m-1 p-1"
           type="button"
           data-testid="All-category-filter"
           onClick={ handleAllDrinks }
@@ -113,7 +113,7 @@ function FilterBar({ title }) {
             <Button
               data-testid={ `${drink.strCategory}-category-filter` }
               value={ `${drink.strCategory}` }
-              className="btn btn-dark btn-sm m-3 p-3"
+              className="btn btn-dark btn-sm m-1 p-1"
               type="button"
               key={ index }
               onClick={ handlerFilter }
@@ -121,7 +121,7 @@ function FilterBar({ title }) {
               {drink.strCategory}
             </Button>))
         }
-      </div>
+      </section>
     );
   }
 }

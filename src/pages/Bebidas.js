@@ -21,18 +21,23 @@ function Bebidas() {
     <Loading />
   );
   const dataRender = () => (
-    <div className="container-fluid d-flex flex-wrap justify-content-around">
+    <div className="container-fluid d-flex justify-content-around flex-wrap">
       { drinks && drinks.slice(0, DOZE).map((drink, index) => (
         <Link to={ `/bebidas/${drink.idDrink}` } key={ drink.idDrink }>
           <div
-            className="card m-1"
+            className="card m-1 "
             data-testid={ `${index}-recipe-card` }
             key={ drink.idDrink }
           >
-            <p className="btn btn-primary" data-testid={ `${index}-card-name` }>{drink.strDrink}</p>
+            <p
+              className=" text-uppercase badge bg-primary text-wrap "
+              data-testid={ `${index}-card-name` }
+            >
+              {drink.strDrink}
+            </p>
             <img
+              width="100em"
               className=" m-1 p-1"
-              width="200px"
               data-testid={ `${index}-card-img` }
               src={ drink.strDrinkThumb }
               alt={ drink.strDrink }

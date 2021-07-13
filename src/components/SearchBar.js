@@ -24,7 +24,6 @@ function SearchBar({ title }) {
     }
     setLoading(true);
     if (title === 'Comidas') {
-      console.log('cheguei aqui', title);
       const response = await apiRequest(selectedRadioButton, searchText);
       if (response.meals === null) {
         alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');

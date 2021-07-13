@@ -24,19 +24,19 @@ function Comidas() {
       { meals && meals.slice(0, DOZE).map((food, index) => (
         <Link to={ `/comidas/${food.idMeal}` } key={ food.idMeal }>
           <div
-            className="card m-1"
+            className="card mt-5 "
             data-testid={ `${index}-recipe-card` }
             key={ food.idMeal }
           >
             <p
-              className="btn btn-primary"
+              className="text-uppercase badge bg-primary "
               data-testid={ `${index}-card-name` }
             >
               {food.strMeal}
             </p>
             <img
               className=" m-1 p-1"
-              width="200px"
+              width="100em"
               data-testid={ `${index}-card-img` }
               src={ food.strMealThumb }
               alt={ food.strMeal }
