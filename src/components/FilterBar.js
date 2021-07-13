@@ -99,26 +99,27 @@ function FilterBar({ title }) {
 
   if (title === 'Bebidas') {
     return (
-      <div className="filterBar">
-        <button
+      <div>
+        <Button
+          className="btn btn-dark btn-sm m-3 p-3"
           type="button"
           data-testid="All-category-filter"
           onClick={ handleAllDrinks }
         >
           All
-        </button>
+        </Button>
         {
           drinksCategories.map((drink, index) => (
-            <button
+            <Button
               data-testid={ `${drink.strCategory}-category-filter` }
               value={ `${drink.strCategory}` }
-              className="filterButtons"
+              className="btn btn-dark btn-sm m-3 p-3"
               type="button"
               key={ index }
               onClick={ handlerFilter }
             >
               {drink.strCategory}
-            </button>))
+            </Button>))
         }
       </div>
     );

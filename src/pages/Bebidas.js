@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { Spinner } from 'react-bootstrap';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ContextRecipes from '../context/ContextRecipes';
@@ -16,14 +17,19 @@ function Bebidas() {
   const { drinks } = dataAux;
   // console.log(drinks);
 
-  const loadingFunc = () => (<div>..Loading...</div>);
-  const dataRender = () => (
+  const loadingFunc = () => (
     <div>
+      <Spinner animation="border" size="sm" />
+    </div>
+  );
+  const dataRender = () => (
+    <div className="container-fluid d-flex flex-wrap justify-content-around">
       { drinks && drinks.slice(0, DOZE).map((drink, index) => (
         <Link to={ `/bebidas/${drink.idDrink}` } key={ drink.idDrink }>
-          <div className="card" data-testid={ `${index}-recipe-card` } key={ drink.idDrink }>
+          <div className="card m-1" data-testid={ `${index}-recipe-card` } key={ drink.idDrink }>
             <p data-testid={ `${index}-card-name` }>{drink.strDrink}</p>
             <img
+              className=" m-1 p-1"
               width="200px"
               data-testid={ `${index}-card-img` }
               src={ drink.strDrinkThumb }
