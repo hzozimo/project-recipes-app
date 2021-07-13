@@ -1,6 +1,8 @@
 import { useEffect, useContext } from 'react';
-import { filterDrinksBtn, filterMealsBtn } from '../api/fetchFilterBtn';
+// import { filterDrinksBtn, filterMealsBtn } from '../api/fetchFilterBtn';
 import ContextRecipes from '../context/ContextRecipes';
+import apiRequest from '../service/service';
+import drinkRequest from '../service/drinkservice';
 
 const useInicialFilters = (title) => {
   const {
@@ -12,11 +14,11 @@ const useInicialFilters = (title) => {
 
   useEffect(() => {
     if (title === 'Comidas' && currentValueFood !== null) {
-      filterMealsBtn(currentValueFood)
+      apiRequest('ingrediente', currentValueFood)
         .then((res) => setData(res));
     }
     if (title === 'Bebidas' && currentValueDrink !== null) {
-      filterDrinksBtn(currentValueDrink)
+      drinkRequest('ingrediente', currentValueDrink)
         .then((res) => setDataDrink(res));
     }
   }, []);
