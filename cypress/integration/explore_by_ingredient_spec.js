@@ -36,7 +36,7 @@ describe('75 - Implemente os elementos da tela de explorar ingredientes respeita
   });
 });
 
-describe.only('76 - Desenvolva cards para os 12 primeiros ingredientes, de forma que cada card contenha o nome do ingrediente e uma foto', () => {
+describe('76 - Desenvolva cards para os 12 primeiros ingredientes, de forma que cada card contenha o nome do ingrediente e uma foto', () => {
   it('Tem o nome e a foto corretos para a tela de explorar comidas por ingredientes', () => {
     cy.visit('http://localhost:3000/explorar/comidas/ingredientes', {
       onBeforeLoad(win) {

@@ -21,7 +21,6 @@ function IngredientesComidas() {
         { meals && meals.slice(0, DOZE).map((ingredient, index) => (
           <button
             type="button"
-            // value={ ingredient.strIngredient }
             data-testid={ `${index}-ingredient-card` }
             key={ index }
             onClick={ () => {

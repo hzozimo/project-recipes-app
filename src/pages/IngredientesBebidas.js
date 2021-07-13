@@ -1,14 +1,15 @@
 import React, { useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import ContextRecipes from '../context/ContextRecipes';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import useFetchDrinksIngredients from '../Hooks/fetchDrinkIngredients';
-// import handlerFilter from '../Helpers/handleFilter';
 
 function IngredientesBebidas() {
   IngredientesBebidas.displayName = 'Explorar Ingredientes: Bebidas';
   const DOZE = 12;
-  const { drinkIngredients } = useContext(ContextRecipes);
+  const history = useHistory();
+  const { drinkIngredients, setCurrentValue } = useContext(ContextRecipes);
   useFetchDrinksIngredients();
 
   const loadingFunc = () => (<div>..Loading...</div>);
@@ -17,16 +18,24 @@ function IngredientesBebidas() {
     const { drinks } = drinkIngredientsAUX;
     return (
       <div>
-        { drinks && drinks.slice(0, DOZE).map((drink, index) => (
-          <div data-testid={ `${index}-ingredient-card` } key={ index }>
+        { drinks && drinks.slice(0, DOZE).map((ingredient, index) => (
+          <button
+            type="button"
+            data-testid={ `${index}-ingredient-card` }
+            key={ index }
+            onClick={ () => {
+              setCurrentValue(ingredient.strIngredient1);
+              history.push('/bebidas');
+            } }
+          >
             <img
               width="200px"
               data-testid={ `${index}-card-img` }
-              src={ `https://www.thecocktaildb.com/images/ingredients/${drink.strIngredient1}-Small.png` }
-              alt={ drink.strIngredient1 }
+              src={ `https://www.thecocktaildb.com/images/ingredients/${ingredient.strIngredient1}-Small.png` }
+              alt={ ingredient.strIngredient1 }
             />
-            <p data-testid={ `${index}-card-name` }>{drink.strIngredient1}</p>
-          </div>
+            <p data-testid={ `${index}-card-name` }>{ingredient.strIngredient1}</p>
+          </button>
         ))}
       </div>
     );

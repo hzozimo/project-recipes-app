@@ -18,8 +18,7 @@ function RecipesProvider({ children }) {
   const [recomendations, setRecomendations] = useState({});
   const [favorited, setFavorited] = useState(false);
   const [loadInProgressRecipes, setLoadInProgressRecipes] = useState({
-    cocktails:
-    [],
+    cocktails: [],
     meals: [],
   });
   const [foodIngredients, setFoodIngredients] = useState({});
