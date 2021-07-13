@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { Spinner } from 'react-bootstrap';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ContextRecipes from '../context/ContextRecipes';
 import useFetchInicialFoods from '../Hooks/fetchInicialFoods';
 import FilterBar from '../components/FilterBar';
+import Loading from '../components/Loading';
 
 function Comidas() {
   const DOZE = 12;
@@ -15,18 +15,19 @@ function Comidas() {
 
   const dataAux = { ...data };
   const { meals } = dataAux;
-  // console.log(meals);
 
   const loadingFunc = () => (
-    <div>
-      <Spinner animation="border" size="sm" />
-    </div>
+    <Loading />
   );
   const dataRender = () => (
     <div className="container-fluid d-flex flex-wrap justify-content-around">
       { meals && meals.slice(0, DOZE).map((food, index) => (
         <Link to={ `/comidas/${food.idMeal}` } key={ food.idMeal }>
-          <div className="card m-1" data-testid={ `${index}-recipe-card` } key={ food.idMeal }>
+          <div
+            className="card m-1"
+            data-testid={ `${index}-recipe-card` }
+            key={ food.idMeal }
+          >
             <p data-testid={ `${index}-card-name` }>{food.strMeal}</p>
             <img
               className=" m-1 p-1"

@@ -27,6 +27,7 @@ const Login = () => {
   return (
     <fieldset>
       <Input
+        className="btn-close btn-close-white"
         type="text"
         datatestid="email-input"
         label="Email"

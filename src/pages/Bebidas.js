@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { Spinner } from 'react-bootstrap';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ContextRecipes from '../context/ContextRecipes';
 import useFetchInicialDrinks from '../Hooks/fetchInicialDrinks';
 import FilterBar from '../components/FilterBar';
+import Loading from '../components/Loading';
 
 function Bebidas() {
   const DOZE = 12;
@@ -18,15 +18,17 @@ function Bebidas() {
   // console.log(drinks);
 
   const loadingFunc = () => (
-    <div>
-      <Spinner animation="border" size="sm" />
-    </div>
+    <Loading />
   );
   const dataRender = () => (
     <div className="container-fluid d-flex flex-wrap justify-content-around">
       { drinks && drinks.slice(0, DOZE).map((drink, index) => (
         <Link to={ `/bebidas/${drink.idDrink}` } key={ drink.idDrink }>
-          <div className="card m-1" data-testid={ `${index}-recipe-card` } key={ drink.idDrink }>
+          <div
+            className="card m-1"
+            data-testid={ `${index}-recipe-card` }
+            key={ drink.idDrink }
+          >
             <p data-testid={ `${index}-card-name` }>{drink.strDrink}</p>
             <img
               className=" m-1 p-1"
