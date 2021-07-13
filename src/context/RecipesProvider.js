@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import propTypes from 'prop-types';
 import ContextRecipes from './ContextRecipes';
 import fetchCategories from '../api/fetchCategories';
+import { fetchAreas } from '../api/fetchAreas';
 
 function RecipesProvider({ children }) {
   const [filter, setFilter] = useState([]);
@@ -25,13 +26,17 @@ function RecipesProvider({ children }) {
   const [drinkIngredients, setDrinkIngredients] = useState({});
   const [currentValueFood, setCurrentValueFood] = useState(null);
   const [currentValueDrink, setCurrentValueDrink] = useState(null);
+  const [areasFood, setAreasFood] = useState({});
+  // const [filterAreaFood, setFilterAreaFood] = useState('All');
 
   useEffect(() => {
     async function fetchData() {
+      const areasAPI = await fetchAreas();
       const drinksCategoriesAPI = await fetchCategories('drinks');
       const mealCategoriesAPI = await fetchCategories('meals');
       setMealsCategories(mealCategoriesAPI);
       setDrinksCategories(drinksCategoriesAPI);
+      setAreasFood(areasAPI);
     }
     fetchData();
   }, []);
@@ -72,6 +77,10 @@ function RecipesProvider({ children }) {
     setCurrentValueFood,
     currentValueDrink,
     setCurrentValueDrink,
+    areasFood,
+    setAreasFood,
+    // filterAreaFood,
+    // setFilterAreaFood,
   };
 
   return (
