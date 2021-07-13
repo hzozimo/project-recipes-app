@@ -1,7 +1,8 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import propTypes from 'prop-types';
 import ContextRecipes from '../context/ContextRecipes';
 import { filterMealsBtn, filterDrinksBtn } from '../api/fetchFilterBtn';
+import useInicialFilters from '../Hooks/fetchInicialFiters';
 import '../App.css';
 
 function FilterBar({ title }) {
@@ -10,20 +11,13 @@ function FilterBar({ title }) {
     setDataDrink,
     mealsCategories,
     drinksCategories,
-    currentValue,
-    setCurrentValue,
+    currentValueFood,
+    setCurrentValueFood,
+    currentValueDrink,
+    setCurrentValueDrink,
   } = useContext(ContextRecipes);
 
-  useEffect(() => {
-    if (title === 'Comidas' && currentValue !== null) {
-      filterMealsBtn(currentValue)
-        .then((res) => setData(res));
-    }
-    if (title === 'Bebidas' && currentValue !== null) {
-      filterDrinksBtn(currentValue)
-        .then((res) => setDataDrink(res));
-    }
-  }, []);
+  useInicialFilters(title);
 
   function handleAllMeals() {
     fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=')
@@ -43,31 +37,31 @@ function FilterBar({ title }) {
 
   function handlerFilter({ target: { value } }) {
     if (title === 'Comidas') {
-      if (value !== currentValue) {
+      if (value !== currentValueFood) {
         filterMealsBtn(value)
           .then((res) => setData(res));
-        setCurrentValue(value);
+        setCurrentValueFood(value);
       } else {
         fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=')
           .then((res) => res.json())
           .then((res) => {
             setData(res);
           });
-        setCurrentValue(null);
+        setCurrentValueFood(null);
       }
     }
     if (title === 'Bebidas') {
-      if (value !== currentValue) {
+      if (value !== currentValueDrink) {
         filterDrinksBtn(value)
           .then((res) => setDataDrink(res));
-        setCurrentValue(value);
+        setCurrentValueDrink(value);
       } else {
         fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=')
           .then((res) => res.json())
           .then((res) => {
             setDataDrink(res);
           });
-        setCurrentValue(null);
+        setCurrentValueDrink(null);
       }
     }
   }

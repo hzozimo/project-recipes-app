@@ -3,10 +3,10 @@ import ContextRecipes from '../context/ContextRecipes';
 
 const useFetchInicialFoods = () => {
   const [foods, setFoods] = useState({});
-  const { setData, currentValue } = useContext(ContextRecipes);
+  const { setData, currentValueFood } = useContext(ContextRecipes);
 
   const fetchFood = () => {
-    if (currentValue === null) {
+    if (currentValueFood === null) {
       fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=')
         .then((res) => res.json())
         .then((res) => {

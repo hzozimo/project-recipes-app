@@ -9,7 +9,7 @@ function IngredientesComidas() {
   IngredientesComidas.displayName = 'Explorar Ingredientes: Comidas';
   const DOZE = 12;
   const history = useHistory();
-  const { foodIngredients, setCurrentValue } = useContext(ContextRecipes);
+  const { foodIngredients, setCurrentValueFood } = useContext(ContextRecipes);
   useFetchFoodsIngredients();
 
   const loadingFunc = () => (<div>..Loading...</div>);
@@ -24,17 +24,17 @@ function IngredientesComidas() {
             data-testid={ `${index}-ingredient-card` }
             key={ index }
             onClick={ () => {
-              setCurrentValue(ingredient.strIngredient);
+              setCurrentValueFood(ingredient.strIngredient);
               history.push('/comidas');
             } }
           >
+            <p data-testid={ `${index}-card-name` }>{ingredient.strIngredient}</p>
             <img
               width="200px"
               data-testid={ `${index}-card-img` }
               src={ `https://www.themealdb.com/images/ingredients/${ingredient.strIngredient}-Small.png` }
               alt={ ingredient.strIngredient }
             />
-            <p data-testid={ `${index}-card-name` }>{ingredient.strIngredient}</p>
           </button>
         ))}
       </div>

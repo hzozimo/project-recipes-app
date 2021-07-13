@@ -3,10 +3,10 @@ import ContextRecipes from '../context/ContextRecipes';
 
 const useFetchInicialDrinks = () => {
   const [Drinks, setDrinks] = useState({});
-  const { setDataDrink, currentValue } = useContext(ContextRecipes);
+  const { setDataDrink, currentValueDrink } = useContext(ContextRecipes);
 
   const fetchDrink = () => {
-    if (currentValue === null) {
+    if (currentValueDrink === null) {
       fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=')
         .then((res) => res.json())
         .then((res) => {

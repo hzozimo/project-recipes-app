@@ -23,7 +23,8 @@ function RecipesProvider({ children }) {
   });
   const [foodIngredients, setFoodIngredients] = useState({});
   const [drinkIngredients, setDrinkIngredients] = useState({});
-  const [currentValue, setCurrentValue] = useState(null);
+  const [currentValueFood, setCurrentValueFood] = useState(null);
+  const [currentValueDrink, setCurrentValueDrink] = useState(null);
 
   useEffect(() => {
     async function fetchData() {
@@ -67,8 +68,10 @@ function RecipesProvider({ children }) {
     setFoodIngredients,
     drinkIngredients,
     setDrinkIngredients,
-    currentValue,
-    setCurrentValue,
+    currentValueFood,
+    setCurrentValueFood,
+    currentValueDrink,
+    setCurrentValueDrink,
   };
 
   return (

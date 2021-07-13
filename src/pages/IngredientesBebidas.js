@@ -9,7 +9,7 @@ function IngredientesBebidas() {
   IngredientesBebidas.displayName = 'Explorar Ingredientes: Bebidas';
   const DOZE = 12;
   const history = useHistory();
-  const { drinkIngredients, setCurrentValue } = useContext(ContextRecipes);
+  const { drinkIngredients, setCurrentValueDrink } = useContext(ContextRecipes);
   useFetchDrinksIngredients();
 
   const loadingFunc = () => (<div>..Loading...</div>);
@@ -24,7 +24,7 @@ function IngredientesBebidas() {
             data-testid={ `${index}-ingredient-card` }
             key={ index }
             onClick={ () => {
-              setCurrentValue(ingredient.strIngredient1);
+              setCurrentValueDrink(ingredient.strIngredient1);
               history.push('/bebidas');
             } }
           >
