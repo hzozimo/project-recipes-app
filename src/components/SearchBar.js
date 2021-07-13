@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import propTypes from 'prop-types';
+import { Button } from 'react-bootstrap';
 import apiRequest from '../service/service';
 import ContextRecipes from '../context/ContextRecipes';
 import drinkRequest from '../service/drinkservice';
@@ -34,7 +35,6 @@ function SearchBar({ title }) {
       setLoading(false);
     }
     if (title === 'Bebidas') {
-      console.log('cheguei aqui', title);
       const response = await drinkRequest(selectedRadioButton, searchText);
       if (response.drinks === null) {
         alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
@@ -87,13 +87,14 @@ function SearchBar({ title }) {
         />
         Primeira Letra
       </label>
-      <button
+      <Button
+        className="btn btn-success btn-sm m-3 p-3"
         type="button"
         data-testid="exec-search-btn"
         onClick={ () => apiChoose() }
       >
         Buscar
-      </button>
+      </Button>
     </form>);
 }
 

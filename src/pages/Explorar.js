@@ -1,5 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 // import ExplorarComidas from './ExplorarComidas';
@@ -10,20 +11,22 @@ function Explorar() {
   return (
     <div>
       <Header title={ Explorar.displayName } />
-      <button
+      <Button
+        className="btn btn-dark btn-sm m-3 p-3"
         type="button"
         data-testid="explore-food"
         onClick={ () => history.push('explorar/comidas') }
       >
         Explorar Comidas
-      </button>
-      <button
+      </Button>
+      <Button
+        className="btn btn-dark btn-sm m-3 p-3"
         type="button"
         data-testid="explore-drinks"
         onClick={ () => history.push('explorar/bebidas') }
       >
         Explorar Bebidas
-      </button>
+      </Button>
       <Footer />
     </div>
   );

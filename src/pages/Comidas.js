@@ -28,7 +28,12 @@ function Comidas() {
             data-testid={ `${index}-recipe-card` }
             key={ food.idMeal }
           >
-            <p data-testid={ `${index}-card-name` }>{food.strMeal}</p>
+            <p
+              className="btn btn-primary"
+              data-testid={ `${index}-card-name` }
+            >
+              {food.strMeal}
+            </p>
             <img
               className=" m-1 p-1"
               width="200px"

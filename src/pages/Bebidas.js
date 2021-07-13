@@ -29,7 +29,7 @@ function Bebidas() {
             data-testid={ `${index}-recipe-card` }
             key={ drink.idDrink }
           >
-            <p data-testid={ `${index}-card-name` }>{drink.strDrink}</p>
+            <p className="btn btn-primary" data-testid={ `${index}-card-name` }>{drink.strDrink}</p>
             <img
               className=" m-1 p-1"
               width="200px"

@@ -7,6 +7,7 @@ import useFetchIdAndRecomendations from '../Hooks/fetchDetailsAndRecomendations'
 import shareIcon from '../images/shareIcon.svg';
 import './detalhes.css';
 import FavoriteDrink from '../components/FavoriteDrink';
+import Loading from '../components/Loading';
 
 function DetalhesBebida() {
   const { id } = useParams();
@@ -65,7 +66,7 @@ function DetalhesBebida() {
               </div>
             ))}
           </div>)
-        : <h1> Loading Recomendations</h1>
+        : <Loading />
     );
   };
 
@@ -124,7 +125,7 @@ function DetalhesBebida() {
             </div>
             <RecipeDrinksButton drinkDetails={ drinkDetails } />
           </div>)
-        : <h1> Loading...</h1>}
+        : <Loading />}
     </div>
   );
 }

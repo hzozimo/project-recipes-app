@@ -7,6 +7,7 @@ import shareIcon from '../images/shareIcon.svg';
 import FavoriteDrink from '../components/FavoriteDrink';
 import './detalhes.css';
 import verifyIngredient from '../Helpers/verifyIngredient';
+import Loading from '../components/Loading';
 
 function InProgressBebida() {
   const history = useHistory();
@@ -191,7 +192,7 @@ function InProgressBebida() {
               Finalizar Receita
             </button>
           </div>)
-        : <h1> Loading...</h1>}
+        : <Loading /> }
     </div>
   );
 }

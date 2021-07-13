@@ -5,6 +5,7 @@ import ContextRecipes from '../context/ContextRecipes';
 import useFetchIdAndRecomendations from '../Hooks/fetchDetailsAndRecomendations';
 import shareIcon from '../images/shareIcon.svg';
 import FavoriteFood from '../components/FavoriteFood';
+import Loading from '../components/Loading';
 
 import './detalhes.css';
 import RecipeMealsButton from '../components/RecipeMealsButton';
@@ -87,7 +88,7 @@ function DetalhesComida() {
               </div>
             ))}
           </div>)
-        : <h1> Loading Recomendations</h1>
+        : <Loading />
     );
   };
 
@@ -148,7 +149,7 @@ function DetalhesComida() {
             </div>
             <RecipeMealsButton foodDetails={ foodDetails } />
           </div>)
-        : <h1> Loading...</h1>}
+        : <Loading />}
     </div>
   );
 }

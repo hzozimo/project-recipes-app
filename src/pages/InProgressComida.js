@@ -7,6 +7,7 @@ import shareIcon from '../images/shareIcon.svg';
 import FavoriteFood from '../components/FavoriteFood';
 import './detalhes.css';
 import verifyIngredient from '../Helpers/verifyIngredient';
+import Loading from '../components/Loading';
 
 function InProgressComida() {
   const history = useHistory();
@@ -169,7 +170,7 @@ function InProgressComida() {
               Finalizar Receita
             </button>
           </div>)
-        : <h1> Loading...</h1>}
+        : <Loading />}
     </div>
   );
 }
