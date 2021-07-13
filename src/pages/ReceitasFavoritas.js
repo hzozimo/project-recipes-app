@@ -138,4 +138,3 @@ function ReceitasFavoritas() {
 }
 
 export default ReceitasFavoritas;
-.
