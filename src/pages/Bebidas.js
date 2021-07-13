@@ -21,7 +21,7 @@ function Bebidas() {
     <div>
       { drinks && drinks.slice(0, DOZE).map((drink, index) => (
         <Link to={ `/bebidas/${drink.idDrink}` } key={ drink.idDrink }>
-          <div data-testid={ `${index}-recipe-card` } key={ drink.idDrink }>
+          <div className="card" data-testid={ `${index}-recipe-card` } key={ drink.idDrink }>
             <p data-testid={ `${index}-card-name` }>{drink.strDrink}</p>
             <img
               width="200px"

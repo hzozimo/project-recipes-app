@@ -5,7 +5,6 @@ import Footer from '../components/Footer';
 import ContextRecipes from '../context/ContextRecipes';
 import useFetchInicialFoods from '../Hooks/fetchInicialFoods';
 import FilterBar from '../components/FilterBar';
-// import { Button } from 'bootstrap';
 
 function Comidas() {
   const DOZE = 12;
@@ -19,12 +18,13 @@ function Comidas() {
 
   const loadingFunc = () => (<div>..Loading...</div>);
   const dataRender = () => (
-    <div>
+    <div className="container-fluid d-flex flex-wrap justify-content-around">
       { meals && meals.slice(0, DOZE).map((food, index) => (
         <Link to={ `/comidas/${food.idMeal}` } key={ food.idMeal }>
           <div data-testid={ `${index}-recipe-card` } key={ food.idMeal }>
             <p data-testid={ `${index}-card-name` }>{food.strMeal}</p>
             <img
+              className="m-1 p-1"
               width="200px"
               data-testid={ `${index}-card-img` }
               src={ food.strMealThumb }

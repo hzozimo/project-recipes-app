@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import copy from 'clipboard-copy';
 import { Link } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 import Header from '../components/Header';
 import shareIcon from '../images/shareIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
@@ -109,7 +110,8 @@ function ReceitasFavoritas() {
     return (
       <div>
         {buttons.map((button, index) => (
-          <button
+          <Button
+            className="btn btn-dark btn-sm m-3 p-3"
             type="button"
             key={ index }
             value={ button }
@@ -117,7 +119,7 @@ function ReceitasFavoritas() {
             onClick={ (event) => saveTypeToRender(event) }
           >
             {button}
-          </button>
+          </Button>
         ))}
       </div>);
   };

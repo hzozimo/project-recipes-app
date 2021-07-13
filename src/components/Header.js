@@ -29,7 +29,7 @@ function Header({ title }) {
           data-testid="profile-top-btn"
         />
       </Link>
-      <h1 data-testid="page-title">{ title }</h1>
+      <h1 className="h1 text-center text-warning" data-testid="page-title">{ title }</h1>
       {/* mudar essa rota abaixo */}
       { title === 'Comidas'
        || title === 'Bebidas'

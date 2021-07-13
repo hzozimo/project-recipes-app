@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import propTypes from 'prop-types';
+import { Button } from 'react-bootstrap';
 import ContextRecipes from '../context/ContextRecipes';
 import { filterMealsBtn, filterDrinksBtn } from '../api/fetchFilterBtn';
 import '../App.css';
@@ -70,26 +71,27 @@ function FilterBar({ title }) {
 
   if (title === 'Comidas') {
     return (
-      <div className="filterBar">
-        <button
+      <div>
+        <Button
+          className="btn btn-dark btn-sm m-3 p-3"
           type="button"
           data-testid="All-category-filter"
           onClick={ handleAllMeals }
         >
           All
-        </button>
+        </Button>
         {
           mealsCategories.map((meal, index) => (
-            <button
+            <Button
               data-testid={ `${meal.strCategory}-category-filter` }
               value={ `${meal.strCategory}` }
-              className="filterButtons"
+              className="btn btn-dark btn-sm m-3 p-3"
               type="button"
               key={ index }
               onClick={ handlerFilter }
             >
               {meal.strCategory}
-            </button>))
+            </Button>))
         }
       </div>
     );

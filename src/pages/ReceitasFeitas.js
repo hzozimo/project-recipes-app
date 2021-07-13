@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import copy from 'clipboard-copy';
 import { Link } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 import Header from '../components/Header';
 import shareIcon from '../images/shareIcon.svg';
 
@@ -20,9 +21,11 @@ function ReceitasFeitas() {
     const buttons = ['All', 'Food', 'Drinks'];
     const dataTest = ['filter-by-all-btn', 'filter-by-food-btn', 'filter-by-drink-btn'];
     return (
+      // temos abaixo classesbootstrap
       <div>
         {buttons.map((button, index) => (
-          <button
+          <Button
+            className="btn btn-dark btn-sm m-3 p-3"
             type="button"
             key={ index }
             value={ button }
@@ -30,7 +33,7 @@ function ReceitasFeitas() {
             onClick={ (event) => saveTypeToRender(event) }
           >
             {button}
-          </button>
+          </Button>
         ))}
       </div>);
   };
