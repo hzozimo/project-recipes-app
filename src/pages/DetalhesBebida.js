@@ -20,7 +20,7 @@ function DetalhesBebida() {
   console.log('drink na pagina de detalhes:', drinkDetails);
 
   const ingredientsList = () => {
-    const MAX_INGREDIENTS = 20;
+    const MAX_INGREDIENTS = 15;
     const ingredients = [];
     const measures = [];
     for (let index = 1; index <= MAX_INGREDIENTS; index += 1) {
@@ -32,18 +32,22 @@ function DetalhesBebida() {
     const ingredientsFiltered = ingredients
       .filter((ingredient) => (ingredient !== '' && ingredient !== null));
     return (
-      <div>
+      <>
         {ingredientsFiltered.map((ingredient, index) => (
           (
-            <p key={ index } data-testid={ `${index}-ingredient-name-and-measure` }>
+            <li
+              className="ingredient-li"
+              key={ index }
+              data-testid={ `${index}-ingredient-name-and-measure` }
+            >
               {' '}
               {ingredient}
               {' '}
               {measures[index]}
               {' '}
-            </p>)
+            </li>)
         ))}
-      </div>
+      </>
     );
   };
 
@@ -52,7 +56,7 @@ function DetalhesBebida() {
     return (
       recomendations.meals
         ? (
-          <div className="recomendations">
+          <div className="card m-1 recomendations">
             {console.log('recomen', recomendations)}
             {recomendations.meals.slice(0, SEIS).map((meal, index) => (
               <div
@@ -60,9 +64,10 @@ function DetalhesBebida() {
                 className="recomendationsChild"
                 data-testid={ `${index}-recomendation-card` }
               >
-                <img width="100px" src={ meal.strMealThumb } alt={ meal.strMeal } />
                 <p>{ meal.strtags }</p>
                 <p data-testid={ `${index}-recomendation-title` }>{ meal.strMeal }</p>
+                <img width="100em" src={ meal.strMealThumb } alt={ meal.strMeal } />
+
               </div>
             ))}
           </div>)
@@ -83,37 +88,37 @@ function DetalhesBebida() {
             <h1 data-testid="recipe-title">
               {drinkDetails.drinks[0].strDrink}
             </h1>
-            <div className="details-flex">
+            <div className="img-details-container">
               <img
+                width="300em"
                 src={ drinkDetails.drinks[0].strDrinkThumb }
                 alt={ drinkDetails.drinks[0].strDrink }
                 data-testid="recipe-photo"
               />
-              <div>
-                <h4>
-                  {' '}
-                  { drinkDetails.drinks[0].strCategory }
-                </h4>
-                <h5 data-testid="recipe-category">
-                  {drinkDetails.drinks[0].strAlcoholic}
-                </h5>
-              </div>
             </div>
-            <div>
+            <h4>
+              { drinkDetails.drinks[0].strCategory }
+            </h4>
+            <h5 data-testid="recipe-category">
+              {drinkDetails.drinks[0].strAlcoholic}
+            </h5>
+            <div className="button-details-app">
               <div>
                 <button type="button" onClick={ () => sharing() }>
                   <img src={ shareIcon } alt="shareIcon" data-testid="share-btn" />
                 </button>
                 <p className={ shared }>Link copiado!</p>
               </div>
-              <FavoriteDrink />
+              <div>
+                <FavoriteDrink />
+              </div>
             </div>
-            <div>
-              <h2> Ingredients </h2>
+            <ul>
+              <h3 className="ingredientes-title">Ingredients</h3>
               { ingredientsList() }
-            </div>
-            <h2>instructions</h2>
-            <p data-testid="instructions">
+            </ul>
+            <h3 className="ingredientes-title">Instructions</h3>
+            <p className="instructions-details-app" data-testid="instructions">
               { drinkDetails.drinks[0].strInstructions }
             </p>
             <div>

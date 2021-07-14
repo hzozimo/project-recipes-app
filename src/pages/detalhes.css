@@ -3,19 +3,23 @@
   flex-direction: row;
   overflow-x: scroll;
   white-space: nowrap;
-  width: 200px;
-}
-
-.recomendationsChild {
-  display: inline-block;
-  width: 200px;
+  width: 100%;
 }
 
 .iniciarReceita {
+  padding:30px;
   background-color: chartreuse;
   bottom: 0;
   position: fixed;
   width: 100%;
+}
+
+.iframe-container {
+  display: flex;
+  justify-content:center;
+}
+.iframe-video {
+  margin: 3em;
 }
 
 .escondido {

@@ -156,3 +156,7 @@ justify-content:space-evenly;
   font: size 25px;
   font-style: unset;
 }
+
+.instructions-details-app {
+  margin: 9px;
+}

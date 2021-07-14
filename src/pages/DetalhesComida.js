@@ -6,8 +6,8 @@ import useFetchIdAndRecomendations from '../Hooks/fetchDetailsAndRecomendations'
 import shareIcon from '../images/shareIcon.svg';
 import FavoriteFood from '../components/FavoriteFood';
 import Loading from '../components/Loading';
-
 import './detalhes.css';
+
 import RecipeMealsButton from '../components/RecipeMealsButton';
 
 function DetalhesComida() {
@@ -43,11 +43,8 @@ function DetalhesComida() {
               key={ index }
               data-testid={ `${index}-ingredient-name-and-measure` }
             >
-              {' '}
               {ingredient}
-              {' '}
               {measures[index]}
-              {' '}
             </li>)
         ))}
       </>
@@ -61,16 +58,19 @@ function DetalhesComida() {
     const videoOptions = `${videoOptions1}encrypted-media; gyroscope; picture-in-picture`;
 
     return (
-      <iframe
-        width="300"
-        height="300"
-        src={ videoUrlEmbed }
-        title="YouTube video player"
-        frameBorder="0"
-        allow={ videoOptions }
-        allowFullScreen
-        data-testid="video"
-      />
+      <div className="iframe-container">
+        <iframe
+          className="iframe-video"
+          width="300"
+          height="300"
+          src={ videoUrlEmbed }
+          title="YouTube video player"
+          frameBorder="0"
+          allow={ videoOptions }
+          allowFullScreen
+          data-testid="video"
+        />
+      </div>
     );
   };
 
@@ -83,12 +83,22 @@ function DetalhesComida() {
             {recomendations.drinks.slice(0, SEIS).map((drink, index) => (
               <div
                 key={ drink.idDrink }
-                className="recomendationsChild"
                 data-testid={ `${index}-recomendation-card` }
               >
-                <img width="100px" src={ drink.strDrinkThumb } alt={ drink.strDrink } />
-                <p>{ drink.strAlcoholic }</p>
-                <p data-testid={ `${index}-recomendation-title` }>{ drink.strDrink }</p>
+                <div className="m-5">
+                  <p>{ drink.strAlcoholic }</p>
+                  <p
+                    data-testid={ `${index}-recomendation-title` }
+                  >
+                    { drink.strDrink }
+                  </p>
+                  <img
+                    className="mb-5 img-thumbnail"
+                    width="100em"
+                    src={ drink.strDrinkThumb }
+                    alt={ drink.strDrink }
+                  />
+                </div>
               </div>
             ))}
           </div>)
@@ -118,14 +128,10 @@ function DetalhesComida() {
                 data-testid="recipe-photo"
               />
             </div>
-
             <h4 data-testid="recipe-category">
-              {' '}
               { foodDetails.meals[0].strCategory }
-              {' '}
             </h4>
             <h5>
-              {' '}
               {foodDetails.meals[0].strTags}
             </h5>
             <div className="button-details-app">
@@ -143,8 +149,11 @@ function DetalhesComida() {
               <p className="ingredientes-title">Ingredients</p>
               { ingredientsList() }
             </ul>
-            <h3>instructions</h3>
-            <p data-testid="instructions">
+            <h3 className="ingredientes-title">Instructions</h3>
+            <p
+              className="instructions-details-app"
+              data-testid="instructions"
+            >
               {' '}
               { foodDetails.meals[0].strInstructions }
               {' '}
