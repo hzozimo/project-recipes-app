@@ -3,7 +3,6 @@ body {
   background-color: #ffde6b;
   height: 100vh;
   width: 100vw;
-  overflow: hidden;
 }
 
 h1 {
@@ -17,7 +16,6 @@ h1 {
 }
 
 #cooking {
-  position: relative;
   margin: 0 auto;
   top: 0;
   width: 75vh;

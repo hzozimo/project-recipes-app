@@ -92,7 +92,7 @@ function DetalhesBebida() {
                 alt={ drinkDetails.drinks[0].strDrink }
                 data-testid="recipe-photo"
               />
-              <div className="alcoholic-or-not">
+              <div>
                 <h4>
                   {' '}
                   { drinkDetails.drinks[0].strCategory }
@@ -105,7 +105,7 @@ function DetalhesBebida() {
               </div>
             </div>
             <div>
-              <div className="share">
+              <div>
                 <button type="button" onClick={ () => sharing() }>
                   <img src={ shareIcon } alt="shareIcon" data-testid="share-btn" />
                 </button>

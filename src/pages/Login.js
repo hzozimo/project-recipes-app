@@ -45,7 +45,7 @@ const Login = () => {
           datatestid="password-input"
         />
         <Button
-          className="btn-close btn-close-white"
+          className="btn-close btn-close-white button-entrar-app"
           label="Entrar"
           datatestid="login-submit-btn"
           disabled={ disabled }

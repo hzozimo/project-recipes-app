@@ -125,3 +125,13 @@
 .share {
   display: flex;
 }
+
+.login-input {
+  border-radius: 50%;
+  font-size:30px;
+  color: antiquewhite;
+}
+
+.button-entrar-app {
+  color:#fd7e14
+}
