@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Input = ({ label, onChange, name, type, datatestid, value, src, alt, onClick }) => (
-  <label htmlFor={ name }>
+  <label className=" m-1" htmlFor={ name }>
     { label }
     <input
+      className="form-control mt-1"
       type={ type }
       name={ name }
       onChange={ onChange }

@@ -80,28 +80,32 @@ function DetalhesBebida() {
       { drinkDetails.drinks
         ? (
           <div>
-            <img
-              width="500px"
-              src={ drinkDetails.drinks[0].strDrinkThumb }
-              alt={ drinkDetails.drinks[0].strDrink }
-              data-testid="recipe-photo"
-            />
             <h1 data-testid="recipe-title">
               {' '}
               {drinkDetails.drinks[0].strDrink}
               {' '}
             </h1>
-            <h4>
-              {' '}
-              { drinkDetails.drinks[0].strCategory }
-              {' '}
-            </h4>
-            <h5 data-testid="recipe-category">
-              {' '}
-              {drinkDetails.drinks[0].strAlcoholic}
-            </h5>
+            <div className="details-flex">
+              <img
+                className="img-details"
+                src={ drinkDetails.drinks[0].strDrinkThumb }
+                alt={ drinkDetails.drinks[0].strDrink }
+                data-testid="recipe-photo"
+              />
+              <div className="alcoholic-or-not">
+                <h4>
+                  {' '}
+                  { drinkDetails.drinks[0].strCategory }
+                  {' '}
+                </h4>
+                <h5 data-testid="recipe-category">
+                  {' '}
+                  {drinkDetails.drinks[0].strAlcoholic}
+                </h5>
+              </div>
+            </div>
             <div>
-              <div>
+              <div className="share">
                 <button type="button" onClick={ () => sharing() }>
                   <img src={ shareIcon } alt="shareIcon" data-testid="share-btn" />
                 </button>

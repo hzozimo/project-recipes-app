@@ -25,37 +25,39 @@ const Login = () => {
   const history = useHistory();
 
   return (
-    <fieldset>
-      <Input
-        className="btn-close btn-close-white"
-        type="text"
-        datatestid="email-input"
-        label="Email"
-        name={ email }
-        value={ email }
-        onChange={ (e) => setEmail(e.target.value) }
-      />
-      <Input
-        type="password"
-        label="Senha"
-        name={ password }
-        value={ password }
-        onChange={ (e) => setPassword(e.target.value) }
-        datatestid="password-input"
-      />
-      <Button
-        label="Entrar"
-        datatestid="login-submit-btn"
-        disabled={ disabled }
-        onClick={ () => {
-          localStorage.setItem('mealsToken', '1');
-          localStorage.setItem('cocktailsToken', '1');
-          localStorage.setItem('user', JSON.stringify(userEmail));
-          history.push('/comidas');
-        } }
-      />
-    </fieldset>
+    <>
+      <h1>APPETITE</h1>
+      <div className="login">
+        <Input
+          type="text"
+          datatestid="email-input"
+          label="Email"
+          name={ email }
+          value={ email }
+          onChange={ (e) => setEmail(e.target.value) }
+        />
+        <Input
+          type="password"
+          label="Senha"
+          name={ password }
+          value={ password }
+          onChange={ (e) => setPassword(e.target.value) }
+          datatestid="password-input"
+        />
+        <Button
+          className="btn-close btn-close-white"
+          label="Entrar"
+          datatestid="login-submit-btn"
+          disabled={ disabled }
+          onClick={ () => {
+            localStorage.setItem('mealsToken', '1');
+            localStorage.setItem('cocktailsToken', '1');
+            localStorage.setItem('user', JSON.stringify(userEmail));
+            history.push('/comidas');
+          } }
+        />
+      </div>
+    </>
   );
 };
-
 export default Login;
