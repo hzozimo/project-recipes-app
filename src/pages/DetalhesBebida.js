@@ -81,13 +81,10 @@ function DetalhesBebida() {
         ? (
           <div>
             <h1 data-testid="recipe-title">
-              {' '}
               {drinkDetails.drinks[0].strDrink}
-              {' '}
             </h1>
             <div className="details-flex">
               <img
-                className="img-details"
                 src={ drinkDetails.drinks[0].strDrinkThumb }
                 alt={ drinkDetails.drinks[0].strDrink }
                 data-testid="recipe-photo"
@@ -96,10 +93,8 @@ function DetalhesBebida() {
                 <h4>
                   {' '}
                   { drinkDetails.drinks[0].strCategory }
-                  {' '}
                 </h4>
                 <h5 data-testid="recipe-category">
-                  {' '}
                   {drinkDetails.drinks[0].strAlcoholic}
                 </h5>
               </div>
@@ -111,7 +106,6 @@ function DetalhesBebida() {
                 </button>
                 <p className={ shared }>Link copiado!</p>
               </div>
-              {' '}
               <FavoriteDrink />
             </div>
             <div>
@@ -120,9 +114,7 @@ function DetalhesBebida() {
             </div>
             <h2>instructions</h2>
             <p data-testid="instructions">
-              {' '}
               { drinkDetails.drinks[0].strInstructions }
-              {' '}
             </p>
             <div>
               { renderRecomendations() }

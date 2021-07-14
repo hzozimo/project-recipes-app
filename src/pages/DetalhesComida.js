@@ -35,18 +35,22 @@ function DetalhesComida() {
       .filter((ingredient) => (ingredient !== '' && ingredient !== null));
     console.log('filtered', ingredientsFiltered);
     return (
-      <div>
+      <>
         {ingredientsFiltered.map((ingredient, index) => (
           (
-            <p key={ index } data-testid={ `${index}-ingredient-name-and-measure` }>
+            <li
+              className="ingredient-li"
+              key={ index }
+              data-testid={ `${index}-ingredient-name-and-measure` }
+            >
               {' '}
               {ingredient}
               {' '}
               {measures[index]}
               {' '}
-            </p>)
+            </li>)
         ))}
-      </div>
+      </>
     );
   };
 
@@ -58,8 +62,8 @@ function DetalhesComida() {
 
     return (
       <iframe
-        width="560"
-        height="315"
+        width="300"
+        height="300"
         src={ videoUrlEmbed }
         title="YouTube video player"
         frameBorder="0"
@@ -98,21 +102,23 @@ function DetalhesComida() {
   };
 
   return (
-    <div>
+    <section>
       { foodDetails.meals
         ? (
           <div>
-            <img
-              width="500px"
-              src={ foodDetails.meals[0].strMealThumb }
-              alt={ foodDetails.meals[0].strMeal }
-              data-testid="recipe-photo"
-            />
+
             <h1 data-testid="recipe-title">
-              {' '}
               {foodDetails.meals[0].strMeal}
-              {' '}
             </h1>
+            <div className="img-details-container">
+              <img
+                width="300em"
+                src={ foodDetails.meals[0].strMealThumb }
+                alt={ foodDetails.meals[0].strMeal }
+                data-testid="recipe-photo"
+              />
+            </div>
+
             <h4 data-testid="recipe-category">
               {' '}
               { foodDetails.meals[0].strCategory }
@@ -122,22 +128,22 @@ function DetalhesComida() {
               {' '}
               {foodDetails.meals[0].strTags}
             </h5>
-            <div>
+            <div className="button-details-app">
               <div>
                 <button type="button" onClick={ () => sharing() }>
                   <img src={ shareIcon } alt="shareIcon" data-testid="share-btn" />
                 </button>
                 <p className={ shared }>Link copiado!</p>
               </div>
-              {' '}
-              <FavoriteFood />
-
+              <div>
+                <FavoriteFood />
+              </div>
             </div>
-            <div>
-              <h2> Ingredients </h2>
+            <ul>
+              <p className="ingredientes-title">Ingredients</p>
               { ingredientsList() }
-            </div>
-            <h2>instructions</h2>
+            </ul>
+            <h3>instructions</h3>
             <p data-testid="instructions">
               {' '}
               { foodDetails.meals[0].strInstructions }
@@ -150,7 +156,7 @@ function DetalhesComida() {
             <RecipeMealsButton foodDetails={ foodDetails } />
           </div>)
         : <Loading />}
-    </div>
+    </section>
   );
 }
 

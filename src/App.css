@@ -1,4 +1,3 @@
-
 .meals {
   align-items: center;
   background: #0fa36b;
@@ -134,4 +133,26 @@
 
 .button-entrar-app {
   color:#fd7e14
+}
+
+.button-details-app {
+display:flex;
+flex-direction:row;
+justify-content:space-evenly;
+}
+
+.img-details-container {
+  display:flex;
+  justify-content:center;
+  margin: 15px;
+}
+
+.ingredientes-title {
+  font-size:50px;
+  font-style: oblique;
+}
+
+.ingredient-li{
+  font: size 25px;
+  font-style: unset;
 }
