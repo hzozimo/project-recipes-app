@@ -6,7 +6,7 @@ const mealsByIngredientMock = require('../mocks/mealsByIngredient');
 const drinkIngredientsMock = require('../mocks/drinkIngredients');
 const drinksByIngredientMock = require('../mocks/drinksByIngredient');
 
-describe.only('75 - Implemente os elementos da tela de explorar ingredientes respeitando os atributos descritos no protótipo', () => {
+describe('75 - Implemente os elementos da tela de explorar ingredientes respeitando os atributos descritos no protótipo', () => {
   it('Tem os data-testids corretos para a tela de explorar comidas por ingredientes', () => {
     cy.visit('http://localhost:3000/explorar/comidas/ingredientes');
 

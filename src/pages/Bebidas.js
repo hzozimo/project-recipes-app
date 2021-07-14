@@ -15,22 +15,27 @@ function Bebidas() {
 
   const dataAux = { ...dataDrink };
   const { drinks } = dataAux;
-  // console.log(drinks);
 
   const loadingFunc = () => (
     <Loading />
   );
   const dataRender = () => (
-    <div className="container-fluid d-flex justify-content-around flex-wrap">
+    <div
+      className="container-fluid d-flex flex-wrap"
+    >
       { drinks && drinks.slice(0, DOZE).map((drink, index) => (
-        <Link to={ `/bebidas/${drink.idDrink}` } key={ drink.idDrink }>
+        <Link
+          className="text-decoration-none"
+          to={ `/bebidas/${drink.idDrink}` }
+          key={ drink.idDrink }
+        >
           <div
             className="card m-1 "
             data-testid={ `${index}-recipe-card` }
             key={ drink.idDrink }
           >
             <p
-              className=" text-uppercase badge bg-primary text-wrap "
+              className=" color-secondary "
               data-testid={ `${index}-card-name` }
             >
               {drink.strDrink}
@@ -50,7 +55,6 @@ function Bebidas() {
   return (
     <div>
       <Header title={ Bebidas.displayName } />
-      {/* <h1>Bebidas</h1> */}
       <FilterBar title={ Bebidas.displayName } />
       <div>
         {!dataDrink.drinks ? loadingFunc() : dataRender()}

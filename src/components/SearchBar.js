@@ -94,7 +94,8 @@ function SearchBar({ title }) {
       >
         Buscar
       </Button>
-    </form>);
+    </form>
+  );
 }
 
 SearchBar.propTypes = {

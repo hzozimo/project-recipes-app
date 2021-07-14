@@ -1,10 +1,11 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import propTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
 import ContextRecipes from '../context/ContextRecipes';
 import { filterMealsBtn, filterDrinksBtn } from '../api/fetchFilterBtn';
-// import '../App.css';
 // import getAllRecipes from '../service/FoodDrinksRequest';
+import useInicialFilters from '../Hooks/fetchInicialFiters';
+import '../App.css';
 
 function FilterBar({ title }) {
   const {
@@ -12,13 +13,13 @@ function FilterBar({ title }) {
     setDataDrink,
     mealsCategories,
     drinksCategories,
-    // btnMealsToggle,
-    // setBtnMealsToggle,
-    // btnDrinksToggle,
-    // setBtnDrinksToggle,
+    currentValueFood,
+    setCurrentValueFood,
+    currentValueDrink,
+    setCurrentValueDrink,
   } = useContext(ContextRecipes);
 
-  const [currentValue, setCurrentValue] = useState();
+  useInicialFilters(title);
 
   function handleAllMeals() {
     fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=')
@@ -38,33 +39,31 @@ function FilterBar({ title }) {
 
   function handlerFilter({ target: { value } }) {
     if (title === 'Comidas') {
-      if (value !== currentValue) {
+      if (value !== currentValueFood) {
         filterMealsBtn(value)
           .then((res) => setData(res));
-        // setBtnMealsToggle(false);
-        setCurrentValue(value);
+        setCurrentValueFood(value);
       } else {
         fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=')
           .then((res) => res.json())
           .then((res) => {
             setData(res);
           });
-        // setBtnMealsToggle(true);
-        setCurrentValue(null);
+        setCurrentValueFood(null);
       }
     }
     if (title === 'Bebidas') {
-      if (value !== currentValue) {
+      if (value !== currentValueDrink) {
         filterDrinksBtn(value)
           .then((res) => setDataDrink(res));
-        setCurrentValue(value);
+        setCurrentValueDrink(value);
       } else {
         fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=')
           .then((res) => res.json())
           .then((res) => {
             setDataDrink(res);
           });
-        setCurrentValue(null);
+        setCurrentValueDrink(null);
       }
     }
   }
@@ -76,7 +75,7 @@ function FilterBar({ title }) {
           className="btn btn-dark btn-sm m-1 p-1"
           type="button"
           data-testid="All-category-filter"
-          onClick={ handleAllMeals }
+          onClick={ () => handleAllMeals() }
         >
           All
         </Button>

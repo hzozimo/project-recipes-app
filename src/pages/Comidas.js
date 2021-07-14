@@ -20,11 +20,15 @@ function Comidas() {
     <Loading />
   );
   const dataRender = () => (
-    <div className="container-fluid d-flex flex-wrap justify-content-around">
+    <div className="container-fluid d-flex flex-wrap">
       { meals && meals.slice(0, DOZE).map((food, index) => (
-        <Link to={ `/comidas/${food.idMeal}` } key={ food.idMeal }>
+        <Link
+          className="text-decoration-none"
+          to={ `/comidas/${food.idMeal}` }
+          key={ food.idMeal }
+        >
           <div
-            className="card mt-5 "
+            className="card m-1 "
             data-testid={ `${index}-recipe-card` }
             key={ food.idMeal }
           >
@@ -49,7 +53,6 @@ function Comidas() {
   return (
     <div>
       <Header title={ Comidas.displayName } />
-      {/* <h1>Comidas</h1> */}
       <FilterBar title={ Comidas.displayName } />
       <div>
         {!data.meals ? loadingFunc() : dataRender()}
