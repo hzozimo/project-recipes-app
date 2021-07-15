@@ -72,7 +72,7 @@ function FilterBar({ title }) {
     return (
       <div>
         <Button
-          className="btn btn-dark btn-sm m-1 p-1"
+          className="btn btn-dark btn-sm m-1 p-1 rounded-circle"
           type="button"
           data-testid="All-category-filter"
           onClick={ () => handleAllMeals() }
@@ -84,7 +84,7 @@ function FilterBar({ title }) {
             <Button
               data-testid={ `${meal.strCategory}-category-filter` }
               value={ `${meal.strCategory}` }
-              className="btn btn-dark btn-sm m-1 p-1"
+              className="btn btn-dark btn-sm m-1 p-1 rounded-circle "
               type="button"
               key={ index }
               onClick={ handlerFilter }

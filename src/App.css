@@ -73,6 +73,7 @@
 }
 
 .lupa {
+  width: 40%;
   background-color: Transparent;
   background-repeat:no-repeat;
   border: none;
@@ -159,4 +160,9 @@ justify-content:space-evenly;
 
 .instructions-details-app {
   margin: 9px;
+}
+.search-perfil-app {
+  display: flex;
+  flex-direction: row;
+  justify-content:space-evenly;
 }

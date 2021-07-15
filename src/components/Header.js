@@ -23,28 +23,27 @@ function Header({ title }) {
 
   return (
     <div>
-      <h1 data-testid="page-title">{ title }</h1>
-      <header className="container">
-
-        <div>
-          <Link to="/perfil">
-            <img
-              src={ profileIcon }
-              alt="Profile"
-              data-testid="profile-top-btn"
-            />
-          </Link>
-          {/* mudar essa rota abaixo */}
-          { title === 'Comidas'
+      <div className="search-perfil-app">
+        <Link width="40%" to="/perfil">
+          <img
+            src={ profileIcon }
+            alt="Profile"
+            data-testid="profile-top-btn"
+          />
+        </Link>
+        { title === 'Comidas'
        || title === 'Bebidas'
        || title === 'Explorar Origem' ? renderSearchImage() : false }
-          { searchForm
-            ? (
-              <SearchBar title={ title } />
-            )
-            : false}
-        </div>
-      </header>
+        { searchForm
+          ? (
+            <SearchBar title={ title } />
+          )
+          : false}
+      </div>
+      <div>
+        <h1 data-testid="page-title">{ title }</h1>
+      </div>
+      <header className="container" />
     </div>
 
   );
