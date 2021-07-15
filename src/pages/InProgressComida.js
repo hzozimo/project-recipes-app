@@ -31,14 +31,25 @@ function InProgressComida() {
     if (event.target.checked) {
       if (localStorage.getItem('inProgressRecipes')) {
         const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
-        const inProgressRecipesToSave = {
-          ...inProgressRecipes,
-          meals: {
-            [id]: [...inProgressRecipes.meals[id], event.target.name],
-          },
-        };
-        localStorage
-          .setItem('inProgressRecipes', JSON.stringify(inProgressRecipesToSave));
+        if (inProgressRecipes.meals && inProgressRecipes.meals[id]) {
+          const inProgressRecipesToSave = {
+            ...inProgressRecipes,
+            meals: {
+              [id]: [...inProgressRecipes.meals[id], event.target.name],
+            },
+          };
+          localStorage
+            .setItem('inProgressRecipes', JSON.stringify(inProgressRecipesToSave));
+        } else {
+          const inProgressRecipesToSave = {
+            ...inProgressRecipes,
+            meals: {
+              [id]: [event.target.name],
+            },
+          };
+          localStorage
+            .setItem('inProgressRecipes', JSON.stringify(inProgressRecipesToSave));
+        }
       } else {
         const inProgressRecipesToSave = {
           meals: {
@@ -116,6 +127,28 @@ function InProgressComida() {
     setShared('aparente');
   };
 
+  const finalize = () => {
+    const finalizedRecipe = {
+      id: foodDetails.meals[0].idMeal,
+      type: 'comida',
+      area: foodDetails.meals[0].strArea,
+      category: foodDetails.meals[0].strCategory,
+      alcoholicOrNot: '',
+      name: foodDetails.meals[0].strMeal,
+      image: foodDetails.meals[0].strMealThumb,
+      doneDate: new Date(),
+      tags: [foodDetails.meals[0].strTags],
+    };
+    if (localStorage.getItem('doneRecipes')) {
+      const recipesSaved = JSON.parse(localStorage.getItem('doneRecipes'));
+      recipesSaved.push(finalizedRecipe);
+      localStorage.setItem('doneRecipes', JSON.stringify(recipesSaved));
+    } else {
+      localStorage.setItem('doneRecipes', JSON.stringify([finalizedRecipe]));
+    }
+    history.push('/receitas-feitas');
+  };
+
   return (
     <div>
       { foodDetails.meals
@@ -165,7 +198,7 @@ function InProgressComida() {
               type="button"
               data-testid="finish-recipe-btn"
               disabled={ canFinalize }
-              onClick={ () => history.push('/receitas-feitas') }
+              onClick={ () => finalize() }
             >
               Finalizar Receita
             </button>

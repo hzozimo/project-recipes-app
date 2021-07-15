@@ -59,7 +59,7 @@ function ReceitasFeitas() {
     };
     return (
       <div>
-        {recipesToRender.map((recipe, index) => (
+        {recipesToRender && recipesToRender.map((recipe, index) => (
           <div key={ recipe.id }>
             <Link
               to={ `/${alterURL[recipe.type]}/${recipe.id}` }
@@ -100,7 +100,7 @@ function ReceitasFeitas() {
             </Link>
             <p data-testid={ `${index}-horizontal-done-date` }>{recipe.doneDate}</p>
             <p>
-              {recipe.tags.map((tag, indexIn) => (
+              {recipe.tags && recipe.tags.map((tag, indexIn) => (
                 <div
                   key={ indexIn }
                   data-testid={ `${index}-${tag}-horizontal-tag` }
@@ -120,6 +120,7 @@ function ReceitasFeitas() {
     if (localStorage.getItem('doneRecipes')) {
       const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
       let recipesToRender = doneRecipes;
+      console.log(recipesToRender);
       if (typeToRender !== 'All') {
         recipesToRender = doneRecipes.filter((recipe) => recipe.type === typeToRender);
       }

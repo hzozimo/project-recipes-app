@@ -31,14 +31,25 @@ function InProgressBebida() {
     if (event.target.checked) {
       if (localStorage.getItem('inProgressRecipes')) {
         const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
-        const inProgressRecipesToSave = {
-          ...inProgressRecipes,
-          cocktails: {
-            [id]: [...inProgressRecipes.cocktails[id], event.target.name],
-          },
-        };
-        localStorage
-          .setItem('inProgressRecipes', JSON.stringify(inProgressRecipesToSave));
+        if (inProgressRecipes.cocktails && inProgressRecipes.cocktails[id]) {
+          const inProgressRecipesToSave = {
+            ...inProgressRecipes,
+            cocktails: {
+              [id]: [...inProgressRecipes.cocktails[id], event.target.name],
+            },
+          };
+          localStorage
+            .setItem('inProgressRecipes', JSON.stringify(inProgressRecipesToSave));
+        } else {
+          const inProgressRecipesToSave = {
+            ...inProgressRecipes,
+            cocktails: {
+              [id]: [event.target.name],
+            },
+          };
+          localStorage
+            .setItem('inProgressRecipes', JSON.stringify(inProgressRecipesToSave));
+        }
       } else {
         const inProgressRecipesToSave = {
           cocktails: {
@@ -117,24 +128,24 @@ function InProgressBebida() {
   };
 
   const finalize = () => {
-    // const finalizedRecipe = {
-    //   id: drinkDetails.drinks[0].idDrink,
-    //   type: '',
-    //   area: '',
-    //   category: drinkDetails.drinks[0].strCategory,
-    //   alcoholicOrNot: drinkDetails.drinks[0].strAlcoholic,
-    //   name: drinkDetails.drinks[0].strDrink,
-    //   image: drinkDetails.drinks[0].strDrinkThumb,
-    //   doneDate: new Date(),
-    //   tags: drinkDetails.drinks[0].strTags,
-    // };
-    // if (localStorage.getItem('doneRecipes')) {
-    //   const recipesSaved = JSON.parse(localStorage.getItem('doneRecipes'));
-    //   recipesSaved.push(finalizedRecipe);
-    //   localStorage.setItem('doneRecipes', JSON.stringify(recipesSaved));
-    // } else {
-    //   localStorage.setItem('doneRecipes', JSON.stringify(finalizedRecipe));
-    // }
+    const finalizedRecipe = {
+      id: drinkDetails.drinks[0].idDrink,
+      type: 'bebida',
+      area: '',
+      category: drinkDetails.drinks[0].strCategory,
+      alcoholicOrNot: drinkDetails.drinks[0].strAlcoholic,
+      name: drinkDetails.drinks[0].strDrink,
+      image: drinkDetails.drinks[0].strDrinkThumb,
+      doneDate: new Date(),
+      tags: [drinkDetails.drinks[0].strTags],
+    };
+    if (localStorage.getItem('doneRecipes')) {
+      const recipesSaved = JSON.parse(localStorage.getItem('doneRecipes'));
+      recipesSaved.push(finalizedRecipe);
+      localStorage.setItem('doneRecipes', JSON.stringify(recipesSaved));
+    } else {
+      localStorage.setItem('doneRecipes', JSON.stringify([finalizedRecipe]));
+    }
     history.push('/receitas-feitas');
   };
 
