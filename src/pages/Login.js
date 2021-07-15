@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-
+import Myimage from '../images/Myimage.png';
 import Button from '../components/Button';
 import Input from '../components/Inputs';
 

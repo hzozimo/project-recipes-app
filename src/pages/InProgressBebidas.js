@@ -154,53 +154,50 @@ function InProgressBebida() {
       { drinkDetails.drinks
         ? (
           <div>
-            <img
-              width="500px"
-              src={ drinkDetails.drinks[0].strDrinkThumb }
-              alt={ drinkDetails.drinks[0].strDrink }
-              data-testid="recipe-photo"
-            />
+            <div className="img-details-container">
+              <img
+                width="300em"
+                src={ drinkDetails.drinks[0].strDrinkThumb }
+                alt={ drinkDetails.drinks[0].strDrink }
+                data-testid="recipe-photo"
+              />
+            </div>
             <h1 data-testid="recipe-title">
-              {' '}
               {drinkDetails.drinks[0].strDrink}
-              {' '}
             </h1>
             <h4 data-testid="recipe-category">
-              {' '}
               { drinkDetails.drinks[0].strCategory }
-              {' '}
             </h4>
             <h5>
-              {' '}
               {drinkDetails.drinks[0].strAlcoholic}
             </h5>
-            <div>
+            <div className="button-details-app">
               <div>
                 <button type="button" onClick={ () => sharing() }>
                   <img src={ shareIcon } alt="shareIcon" data-testid="share-btn" />
                 </button>
                 <p className={ shared }>Link copiado!</p>
               </div>
-              {' '}
-              <FavoriteDrink />
+              <div>
+                <FavoriteDrink />
+              </div>
             </div>
             <div>
-              <h2> Ingredients </h2>
+              <h2>Ingredients</h2>
               { ingredientsList() }
             </div>
-            <h2>instructions</h2>
-            <p data-testid="instructions">
-              {' '}
+            <h2>Instructions</h2>
+            <p className="mb-5" data-testid="instructions">
               { drinkDetails.drinks[0].strInstructions }
-              {' '}
             </p>
             <button
+              className="iniciarReceita"
               type="button"
               data-testid="finish-recipe-btn"
               disabled={ canFinalize }
               onClick={ () => finalize() }
             >
-              Finalizar Receita
+              Finish Recipe
             </button>
           </div>)
         : <Loading /> }

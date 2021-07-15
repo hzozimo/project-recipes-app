@@ -44,7 +44,7 @@ function RecipeMealsButton({ foodDetails }) {
       className="iniciarReceita"
       onClick={ () => history.push(`/comidas/${recipeId}/in-progress`) }
     >
-      Iniciar Receita
+      Start Recipe
     </button>
   );
 }

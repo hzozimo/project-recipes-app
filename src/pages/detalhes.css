@@ -6,12 +6,24 @@
   width: 100%;
 }
 
+
+
 .iniciarReceita {
-  padding:30px;
-  background-color: chartreuse;
-  bottom: 0;
   position: fixed;
+  bottom:0;
+  left: 0;
   width: 100%;
+  border-radius: 15px;
+  background-color: #331904;
+  color: #fff;
+  font-style: oblique;
+}
+
+.iniciarReceita:disabled,
+.iniciarReceita[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
 }
 
 .iframe-container {

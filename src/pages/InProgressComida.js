@@ -93,9 +93,9 @@ function InProgressComida() {
         { ingredientsFiltered.map((ingredient, index) => (
           (
             <p key={ index } data-testid={ `${index}-ingredient-name-and-measure` }>
-              <div data-testid={ `${index}-ingredient-step` }>
+              <div className="form-check" data-testid={ `${index}-ingredient-step` }>
                 <input
-                  className="thought"
+                  className="thought form-check-input"
                   id={ `ingredient-${index}` }
                   type="checkbox"
                   value={ ingredient }
@@ -105,7 +105,7 @@ function InProgressComida() {
                   }
                   onChange={ (event) => handleChange(event) }
                 />
-                <label htmlFor={ `ingredient-${index}` } className="finish">
+                <label htmlFor={ `ingredient-${index}` } className="finish form-check-label">
                   {' '}
                   {ingredient}
                   {' '}
@@ -154,53 +154,50 @@ function InProgressComida() {
       { foodDetails.meals
         ? (
           <div>
-            <img
-              width="500px"
-              src={ foodDetails.meals[0].strMealThumb }
-              alt={ foodDetails.meals[0].strMeal }
-              data-testid="recipe-photo"
-            />
             <h1 data-testid="recipe-title">
-              {' '}
               {foodDetails.meals[0].strMeal}
-              {' '}
             </h1>
+            <div className="img-details-container">
+              <img
+                width="300em"
+                src={ foodDetails.meals[0].strMealThumb }
+                alt={ foodDetails.meals[0].strMeal }
+                data-testid="recipe-photo"
+              />
+            </div>
             <h4 data-testid="recipe-category">
-              {' '}
               { foodDetails.meals[0].strCategory }
-              {' '}
             </h4>
             <h5>
-              {' '}
               {foodDetails.meals[0].strTags}
             </h5>
-            <div>
+            <div className="button-details-app">
               <div>
                 <button type="button" onClick={ () => sharing() }>
                   <img src={ shareIcon } alt="shareIcon" data-testid="share-btn" />
                 </button>
                 <p className={ shared }>Link copiado!</p>
               </div>
-              {' '}
-              <FavoriteFood />
+              <div>
+                <FavoriteFood />
+              </div>
             </div>
             <div>
-              <h2> Ingredients </h2>
+              <h2 className="ingredientes-title"> Ingredients </h2>
               { ingredientsList() }
             </div>
-            <h2>instructions</h2>
-            <p data-testid="instructions">
-              {' '}
+            <h2 className="ingredientes-title">Instructions</h2>
+            <p className="instructions-details-app" data-testid="instructions">
               { foodDetails.meals[0].strInstructions }
-              {' '}
             </p>
             <button
+              className="iniciarReceita"
               type="button"
               data-testid="finish-recipe-btn"
               disabled={ canFinalize }
               onClick={ () => finalize() }
             >
-              Finalizar Receita
+              Finish Recipe
             </button>
           </div>)
         : <Loading />}

@@ -64,12 +64,14 @@ function ReceitasFeitas() {
             <Link
               to={ `/${alterURL[recipe.type]}/${recipe.id}` }
             >
-              <img
-                width="300px"
-                src={ recipe.image }
-                alt={ recipe.name }
-                data-testid={ `${index}-horizontal-image` }
-              />
+              <div className="img-details-container">
+                <img
+                  width="300em"
+                  src={ recipe.image }
+                  alt={ recipe.name }
+                  data-testid={ `${index}-horizontal-image` }
+                />
+              </div>
             </Link>
             {recipe.type === 'comida'
               ? (

@@ -56,18 +56,27 @@ function DetalhesBebida() {
     return (
       recomendations.meals
         ? (
-          <div className="card m-1 recomendations">
-            {console.log('recomen', recomendations)}
+          <div className="recomendations">
             {recomendations.meals.slice(0, SEIS).map((meal, index) => (
               <div
                 key={ meal.idDrink }
-                className="recomendationsChild"
                 data-testid={ `${index}-recomendation-card` }
               >
-                <p>{ meal.strtags }</p>
-                <p data-testid={ `${index}-recomendation-title` }>{ meal.strMeal }</p>
-                <img width="100em" src={ meal.strMealThumb } alt={ meal.strMeal } />
-
+                <div className="mb-5">
+                  <p className="m-2">{ meal.strtags }</p>
+                  <p
+                    className="m-2"
+                    data-testid={ `${index}-recomendation-title` }
+                  >
+                    { meal.strMeal }
+                  </p>
+                  <img
+                    className="mb-5 pb-3 img-thumbnail"
+                    width="100em"
+                    src={ meal.strMealThumb }
+                    alt={ meal.strMeal }
+                  />
+                </div>
               </div>
             ))}
           </div>)

@@ -44,7 +44,7 @@ function RecipeDrinksButton({ drinkDetails }) {
       className="iniciarReceita"
       onClick={ () => history.push(`/bebidas/${recipeId}/in-progress`) }
     >
-      Iniciar Receita
+      Start Recipe
     </button>
   );
 }
