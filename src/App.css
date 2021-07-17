@@ -63,8 +63,11 @@
 }
 
 .filterBar {
-  height: 50px;
-  margin: 5px;
+display: flex;
+align-items: center;
+flex-direction: row;
+justify-content: space-between;
+flex-wrap: wrap;
 }
 
 .filterButtons {
@@ -200,5 +203,9 @@ justify-content:space-evenly;
 
 .card-app-size {
   width: 30%;
+  background-color:whitesmoke;
+}
+
+.bg-color {
   background-color:whitesmoke;
 }

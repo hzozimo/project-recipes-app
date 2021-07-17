@@ -98,7 +98,7 @@ function FilterBar({ title }) {
 
   if (title === 'Bebidas') {
     return (
-      <section>
+      <section className="filterBar m-1">
         <button
           className="search-bar-buttons-app"
           type="button"
