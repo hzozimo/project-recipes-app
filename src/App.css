@@ -173,13 +173,14 @@ justify-content:space-evenly;
 }
 
 .search-bar-buttons-app {
-  background-color:black;
+  background-color:#14213D;
   overflow: hidden;
   width: 30%;
   height: 30px;
+  border-style: none;
   font-family: fantasy;
   border-radius: 40px;
-  color:whitesmoke;
+  color:#e5e5e5;
 }
 
 .container-recipes-app {
@@ -207,5 +208,5 @@ justify-content:space-evenly;
 }
 
 .bg-color {
-  background-color:whitesmoke;
+  background-color:#F4A261 !important;
 }
