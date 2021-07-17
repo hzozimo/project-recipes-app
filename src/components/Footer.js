@@ -9,13 +9,28 @@ function Footer() {
   return (
     <footer className="footer" data-testid="footer">
       <Link to="/bebidas">
-        <img src={ drinkIcon } alt="Footer icon" data-testid="drinks-bottom-btn" />
+        <img
+          className="mb-1"
+          src={ drinkIcon }
+          alt="Footer icon"
+          data-testid="drinks-bottom-btn"
+        />
       </Link>
       <Link to="/explorar">
-        <img src={ exploreIcon } alt="Footer icon" data-testid="explore-bottom-btn" />
+        <img
+          className="mb-1"
+          src={ exploreIcon }
+          alt="Footer icon"
+          data-testid="explore-bottom-btn"
+        />
       </Link>
       <Link to="/comidas">
-        <img src={ mealIcon } alt="Footer icon" data-testid="food-bottom-btn" />
+        <img
+          className="mb-1"
+          src={ mealIcon }
+          alt="Footer icon"
+          data-testid="food-bottom-btn"
+        />
       </Link>
     </footer>
   );

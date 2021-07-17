@@ -46,8 +46,9 @@ function SearchBar({ title }) {
   }
 
   return (
-    <form>
+    <form className="form-app">
       <input
+        className="search-input m-2"
         type="text"
         name="searchtext"
         data-testid="search-input"
@@ -55,6 +56,7 @@ function SearchBar({ title }) {
       />
       <label htmlFor="ingrediente">
         <input
+          className="m-1"
           type="radio"
           id="ingrediente"
           value="ingrediente"
@@ -66,6 +68,7 @@ function SearchBar({ title }) {
       </label>
       <label htmlFor="nome">
         <input
+          className="m-1"
           type="radio"
           id="nome"
           value="nome"
@@ -77,6 +80,7 @@ function SearchBar({ title }) {
       </label>
       <label htmlFor="primeiraLetra">
         <input
+          className="m-1"
           type="radio"
           id="primeiraLetra"
           value="primeiraLetra"

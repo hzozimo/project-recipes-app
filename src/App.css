@@ -83,6 +83,7 @@
 }
 
 .color-secondary {
+  width: 100%;
   color:#ffda6a;
   background-color: #ca6510;
   text-align: center;
@@ -164,5 +165,31 @@ justify-content:space-evenly;
 .search-perfil-app {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content:space-evenly;
+}
+
+.search-bar-buttons-app {
+  background-color:black;
+  overflow: hidden;
+  width: 30%;
+  height: 30px;
+  font-family: fantasy;
+  border-radius: 40px;
+  color:whitesmoke;
+}
+
+.container-recipes-app {
+  display: flex;
+  justify-content:space-evenly;
+  flex-wrap: wrap;
+
+}
+
+.form-app {
+  display: flex;
+  flex-wrap: wrap;
+}
+.search-input {
+  width: 100%;
 }

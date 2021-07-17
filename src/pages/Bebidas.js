@@ -21,46 +21,50 @@ function Bebidas() {
   );
   const dataRender = () => (
     <div
-      className="container-fluid d-flex flex-wrap"
+      className="container-recipes-app"
     >
       { drinks && drinks.slice(0, DOZE).map((drink, index) => (
-        <Link
-          className="text-decoration-none"
-          to={ `/bebidas/${drink.idDrink}` }
-          key={ drink.idDrink }
-        >
-          <div
-            className="card m-1 "
-            data-testid={ `${index}-recipe-card` }
+        <div key={ index } className="card-app card">
+          <Link
+            className="text-decoration-none "
+            to={ `/bebidas/${drink.idDrink}` }
             key={ drink.idDrink }
           >
-            <p
-              className=" color-secondary "
-              data-testid={ `${index}-card-name` }
+            <div
+              className="m-1"
+              data-testid={ `${index}-recipe-card` }
+              key={ drink.idDrink }
             >
-              {drink.strDrink}
-            </p>
-            <img
-              width="100em"
-              className=" m-1 p-1"
-              data-testid={ `${index}-card-img` }
-              src={ drink.strDrinkThumb }
-              alt={ drink.strDrink }
-            />
-          </div>
-        </Link>
+              <p
+                className=" color-secondary "
+                data-testid={ `${index}-card-name` }
+              >
+                {drink.strDrink}
+              </p>
+              <img
+                width="100em"
+                className=" m-1 p-1"
+                data-testid={ `${index}-card-img` }
+                src={ drink.strDrinkThumb }
+                alt={ drink.strDrink }
+              />
+            </div>
+          </Link>
+        </div>
       ))}
     </div>);
 
   return (
-    <div>
-      <Header title={ Bebidas.displayName } />
-      <FilterBar title={ Bebidas.displayName } />
-      <div>
-        {!dataDrink.drinks ? loadingFunc() : dataRender()}
+    <>
+      <div className="pb-5">
+        <Header title={ Bebidas.displayName } />
+        <FilterBar title={ Bebidas.displayName } />
+        <div>
+          {!dataDrink.drinks ? loadingFunc() : dataRender()}
+        </div>
       </div>
       <Footer />
-    </div>
+    </>
   );
 }
 

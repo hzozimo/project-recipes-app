@@ -71,26 +71,26 @@ function FilterBar({ title }) {
   if (title === 'Comidas') {
     return (
       <div>
-        <Button
-          className="btn btn-dark btn-sm m-1 p-1 rounded-circle"
+        <button
+          className="search-bar-buttons-app m-1 "
           type="button"
           data-testid="All-category-filter"
           onClick={ () => handleAllMeals() }
         >
           All
-        </Button>
+        </button>
         {
           mealsCategories.map((meal, index) => (
-            <Button
+            <button
               data-testid={ `${meal.strCategory}-category-filter` }
               value={ `${meal.strCategory}` }
-              className="btn btn-dark btn-sm m-1 p-1 rounded-circle "
+              className="search-bar-buttons-app m-1 "
               type="button"
               key={ index }
               onClick={ handlerFilter }
             >
               {meal.strCategory}
-            </Button>))
+            </button>))
         }
       </div>
     );
@@ -99,26 +99,26 @@ function FilterBar({ title }) {
   if (title === 'Bebidas') {
     return (
       <section>
-        <Button
-          className="btn btn-dark btn-sm m-1 p-1"
+        <button
+          className="search-bar-buttons-app"
           type="button"
           data-testid="All-category-filter"
           onClick={ handleAllDrinks }
         >
           All
-        </Button>
+        </button>
         {
           drinksCategories.map((drink, index) => (
-            <Button
+            <button
               data-testid={ `${drink.strCategory}-category-filter` }
               value={ `${drink.strCategory}` }
-              className="btn btn-dark btn-sm m-1 p-1"
+              className="search-bar-buttons-app m-1"
               type="button"
               key={ index }
               onClick={ handlerFilter }
             >
               {drink.strCategory}
-            </Button>))
+            </button>))
         }
       </section>
     );
