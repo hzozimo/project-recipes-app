@@ -28,7 +28,7 @@ function Comidas() {
           key={ food.idMeal }
         >
           <div
-            className="card m-1 card-app "
+            className="card card-text"
             data-testid={ `${index}-recipe-card` }
             key={ food.idMeal }
           >
@@ -39,7 +39,6 @@ function Comidas() {
               {food.strMeal}
             </p>
             <img
-              className=" m-1 p-1"
               width="100em"
               data-testid={ `${index}-card-img` }
               src={ food.strMealThumb }

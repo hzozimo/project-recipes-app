@@ -193,3 +193,12 @@ justify-content:space-evenly;
 .search-input {
   width: 100%;
 }
+
+.card-app {
+  width: 30%;
+}
+
+.card-app-size {
+  width: 30%;
+  background-color:whitesmoke;
+}

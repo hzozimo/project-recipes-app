@@ -24,30 +24,32 @@ function Bebidas() {
       className="container-recipes-app"
     >
       { drinks && drinks.slice(0, DOZE).map((drink, index) => (
-        <div key={ index } className="card-app card">
+        <div
+          key={ index }
+          className="card-app-size m-3 text-center"
+        >
           <Link
-            className="text-decoration-none "
+            className="card-body"
             to={ `/bebidas/${drink.idDrink}` }
             key={ drink.idDrink }
           >
             <div
-              className="m-1"
+              className="text-secondary"
               data-testid={ `${index}-recipe-card` }
               key={ drink.idDrink }
             >
-              <p
-                className=" color-secondary "
-                data-testid={ `${index}-card-name` }
-              >
-                {drink.strDrink}
-              </p>
               <img
-                width="100em"
-                className=" m-1 p-1"
+                className="card-img-top"
                 data-testid={ `${index}-card-img` }
                 src={ drink.strDrinkThumb }
                 alt={ drink.strDrink }
               />
+              <p
+                className="card-title"
+                data-testid={ `${index}-card-name` }
+              >
+                {drink.strDrink}
+              </p>
             </div>
           </Link>
         </div>
