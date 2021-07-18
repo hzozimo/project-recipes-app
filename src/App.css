@@ -213,12 +213,12 @@ justify-content:space-evenly;
 }
 
 .card-app-size {
-  width: 30%;
+  width: 47%;
   background-color:whitesmoke;
 }
 
 .bg-color {
-  background-color:#F4A261 !important;
+  background-color:#e9c46a !important;
 }
 
 .explorer-img-app {
@@ -230,4 +230,8 @@ justify-content:space-evenly;
   flex-direction:column;
   align-items: center;
   justify-content: center;
+}
+
+.img-foods-app {
+  border-radius:8px !important;
 }

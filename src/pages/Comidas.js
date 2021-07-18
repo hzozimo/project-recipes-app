@@ -24,7 +24,7 @@ function Comidas() {
       { meals && meals.slice(0, DOZE).map((food, index) => (
         <div
           key={ index }
-          className="bg-color card-app-size m-3 text-center"
+          className="bg-color card-app-size text-center"
         >
           <Link
             className="card-body"
@@ -37,7 +37,7 @@ function Comidas() {
               key={ food.idMeal }
             >
               <img
-                className="card-img-top"
+                className="card-img-top img-foods-app"
                 data-testid={ `${index}-card-img` }
                 src={ food.strMealThumb }
                 alt={ food.strMeal }
