@@ -17,7 +17,7 @@ function IngredientesBebidas() {
     const drinkIngredientsAUX = { ...drinkIngredients };
     const { drinks } = drinkIngredientsAUX;
     return (
-      <div>
+      <div className="explorer-container">
         { drinks && drinks.slice(0, DOZE).map((ingredient, index) => (
           <button
             type="button"
@@ -29,7 +29,7 @@ function IngredientesBebidas() {
             } }
           >
             <img
-              width="200px"
+              className="explorer-img-app"
               data-testid={ `${index}-card-img` }
               src={ `https://www.thecocktaildb.com/images/ingredients/${ingredient.strIngredient1}-Small.png` }
               alt={ ingredient.strIngredient1 }

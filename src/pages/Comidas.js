@@ -22,30 +22,35 @@ function Comidas() {
   const dataRender = () => (
     <div className="container-recipes-app">
       { meals && meals.slice(0, DOZE).map((food, index) => (
-        <Link
-          className="text-decoration-none"
-          to={ `/comidas/${food.idMeal}` }
-          key={ food.idMeal }
+        <div
+          key={ index }
+          className="bg-color card-app-size m-3 text-center"
         >
-          <div
-            className="card card-text"
-            data-testid={ `${index}-recipe-card` }
+          <Link
+            className="card-body"
+            to={ `/comidas/${food.idMeal}` }
             key={ food.idMeal }
           >
-            <p
-              className="color-secondary"
-              data-testid={ `${index}-card-name` }
+            <div
+              className="text-light"
+              data-testid={ `${index}-recipe-card` }
+              key={ food.idMeal }
             >
-              {food.strMeal}
-            </p>
-            <img
-              width="100em"
-              data-testid={ `${index}-card-img` }
-              src={ food.strMealThumb }
-              alt={ food.strMeal }
-            />
-          </div>
-        </Link>
+              <img
+                className="card-img-top"
+                data-testid={ `${index}-card-img` }
+                src={ food.strMealThumb }
+                alt={ food.strMeal }
+              />
+              <p
+                className="card-title"
+                data-testid={ `${index}-card-name` }
+              >
+                {food.strMeal}
+              </p>
+            </div>
+          </Link>
+        </div>
       ))}
     </div>);
 

@@ -183,6 +183,12 @@ justify-content:space-evenly;
   color:#e5e5e5;
 }
 
+.explorer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:space-around;
+}
+
 .container-recipes-app {
   display: flex;
   justify-content:space-evenly;
@@ -209,4 +215,8 @@ justify-content:space-evenly;
 
 .bg-color {
   background-color:#F4A261 !important;
+}
+
+.explorer-img-app {
+  width: 30%;
 }
