@@ -133,11 +133,15 @@ flex-wrap: wrap;
 .login-input {
   border-radius: 50%;
   font-size:30px;
-  color: antiquewhite;
+  color: #264653;
 }
 
 .button-entrar-app {
-  color:#fd7e14
+  color:#264653;
+  border-style:none !important;
+  border-radius: 14px !important;
+  width:100% !important;
+  background-color: #e9c46a !important;
 }
 
 .button-details-app {
@@ -219,4 +223,11 @@ justify-content:space-evenly;
 
 .explorer-img-app {
   width: 30%;
+}
+
+.perfil-container-app {
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+  justify-content: center;
 }

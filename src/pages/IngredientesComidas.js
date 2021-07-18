@@ -29,9 +29,14 @@ function IngredientesComidas() {
                 history.push('/comidas');
               } }
             >
-              <p data-testid={ `${index}-card-name` }>{ingredient.strIngredient}</p>
+              <p
+                className="card-title"
+                data-testid={ `${index}-card-name` }
+              >
+                {ingredient.strIngredient}
+              </p>
               <img
-                className="card-img-top m-3"
+                className="card-img-top"
                 data-testid={ `${index}-card-img` }
                 src={ `https://www.themealdb.com/images/ingredients/${ingredient.strIngredient}-Small.png` }
                 alt={ ingredient.strIngredient }

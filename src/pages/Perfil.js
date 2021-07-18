@@ -16,21 +16,26 @@ function Perfil() {
         Email:
         { user.email }
       </p>
-      <Button
-        label="Receitas Feitas"
-        datatestid="profile-done-btn"
-        onClick={ () => history.push('/receitas-feitas') }
-      />
-      <Button
-        label="Receitas Favoritas"
-        datatestid="profile-favorite-btn"
-        onClick={ () => history.push('/receitas-favoritas') }
-      />
-      <Button
-        label="Sair"
-        datatestid="profile-logout-btn"
-        onClick={ () => localStorage.clear() || history.push('/') }
-      />
+      <div className="perfil-container-app">
+        <Button
+          className="btn btn-dark m-3"
+          label="Receitas Feitas"
+          datatestid="profile-done-btn"
+          onClick={ () => history.push('/receitas-feitas') }
+        />
+        <Button
+          className="btn btn-dark m-3"
+          label="Receitas Favoritas"
+          datatestid="profile-favorite-btn"
+          onClick={ () => history.push('/receitas-favoritas') }
+        />
+        <Button
+          className="btn btn-danger m-3"
+          label="Sair"
+          datatestid="profile-logout-btn"
+          onClick={ () => localStorage.clear() || history.push('/') }
+        />
+      </div>
       <Footer />
     </div>
   );
