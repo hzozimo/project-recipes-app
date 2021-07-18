@@ -11,23 +11,27 @@ function Explorar() {
   return (
     <div>
       <Header title={ Explorar.displayName } />
-      <Button
-        className="btn btn-dark btn-sm m-3 p-3"
-        type="button"
-        data-testid="explore-food"
-        onClick={ () => history.push('explorar/comidas') }
-      >
-        Explorar Comidas
-      </Button>
-      <Button
-        className="btn btn-dark btn-sm m-3 p-3"
-        type="button"
-        data-testid="explore-drinks"
-        onClick={ () => history.push('explorar/bebidas') }
-      >
-        Explorar Bebidas
-      </Button>
-      <Footer />
+      <div className="explorer-container-buttons">
+        <Button
+          className="explorer-button-initial mb-5"
+          type="button"
+          data-testid="explore-food"
+          onClick={ () => history.push('explorar/comidas') }
+        >
+          Explorar Comidas
+        </Button>
+        <Button
+          className=" explorer-button-initial"
+          type="button"
+          data-testid="explore-drinks"
+          onClick={ () => history.push('explorar/bebidas') }
+        >
+          Explorar Bebidas
+        </Button>
+      </div>
+      <div>
+        <Footer />
+      </div>
     </div>
   );
 }

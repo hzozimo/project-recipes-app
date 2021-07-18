@@ -10,7 +10,7 @@ function Footer() {
     <footer className="footer" data-testid="footer">
       <Link to="/bebidas">
         <img
-          className="mb-1"
+          className="mb-3"
           src={ drinkIcon }
           alt="Footer icon"
           data-testid="drinks-bottom-btn"

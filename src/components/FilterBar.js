@@ -70,7 +70,7 @@ function FilterBar({ title }) {
 
   if (title === 'Comidas') {
     return (
-      <div>
+      <div className="button-container-app p-3">
         <button
           className="search-bar-buttons-app m-1 "
           type="button"
