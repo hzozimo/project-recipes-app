@@ -13,28 +13,32 @@ function AreaBar() {
   }
 
   return (
-    <select
-      name="area"
-      data-testid="explore-by-area-dropdown"
-      // value={  }
-      onChange={ handleChange }
-    >
-      <option
-        data-testid="All-option"
-        value="All"
+    <div className="select-explorer-container">
+      Country/Regions
+      <select
+        className="form-select m-1"
+        name="area"
+        data-testid="explore-by-area-dropdown"
+        // value={  }
+        onChange={ handleChange }
       >
-        All
-      </option>
-      {meals && meals.map((area, index) => (
         <option
-          data-testid={ `${area.strArea}-option` }
-          key={ index }
-          value={ `${area.strArea}` }
+          data-testid="All-option"
+          value="All"
         >
-          {area.strArea}
+          All
         </option>
-      ))}
-    </select>
+        {meals && meals.map((area, index) => (
+          <option
+            data-testid={ `${area.strArea}-option` }
+            key={ index }
+            value={ `${area.strArea}` }
+          >
+            {area.strArea}
+          </option>
+        ))}
+      </select>
+    </div>
   );
 }
 

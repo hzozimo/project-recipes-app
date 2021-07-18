@@ -18,19 +18,30 @@ function ExplorarOrigem() {
   console.log(data);
   const loadingFunc = () => (<div>..Loading...</div>);
   const dataRender = () => (
-    <div>
+    <div className="container-recipes-app p-5">
       { meals && meals.slice(0, DOZE).map((food, index) => (
-        <Link to={ `/comidas/${food.idMeal}` } key={ food.idMeal }>
-          <div data-testid={ `${index}-recipe-card` } key={ food.idMeal }>
-            <p data-testid={ `${index}-card-name` }>{food.strMeal}</p>
-            <img
-              width="200px"
-              data-testid={ `${index}-card-img` }
-              src={ food.strMealThumb }
-              alt={ food.strMeal }
-            />
-          </div>
-        </Link>
+        <div key={ index } className="bg-color card-app-size text-center">
+          <Link
+            className="card-body"
+            to={ `/comidas/${food.idMeal}` }
+            key={ food.idMeal }
+          >
+            <div data-testid={ `${index}-recipe-card` } key={ food.idMeal }>
+              <p
+                className="title-foods-app card-title"
+                data-testid={ `${index}-card-name` }
+              >
+                {food.strMeal}
+              </p>
+              <img
+                className="card-img-top img-foods-app"
+                data-testid={ `${index}-card-img` }
+                src={ food.strMealThumb }
+                alt={ food.strMeal }
+              />
+            </div>
+          </Link>
+        </div>
       ))}
     </div>);
 
@@ -41,7 +52,9 @@ function ExplorarOrigem() {
       <div>
         {!data ? loadingFunc() : dataRender()}
       </div>
-      <Footer />
+      <div>
+        <Footer />
+      </div>
     </div>
   );
 }

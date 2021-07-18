@@ -272,3 +272,8 @@ justify-content:space-evenly;
   border-radius:30px;
 
 }
+
+.select-explorer-container {
+  display:flex;
+  justify-content: center;
+}
