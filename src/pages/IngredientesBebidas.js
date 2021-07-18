@@ -17,9 +17,10 @@ function IngredientesBebidas() {
     const drinkIngredientsAUX = { ...drinkIngredients };
     const { drinks } = drinkIngredientsAUX;
     return (
-      <div className="explorer-container">
+      <div className="explorer-container mb-5 pb-5">
         { drinks && drinks.slice(0, DOZE).map((ingredient, index) => (
           <button
+            className="ingredients-button-app m-1 pb-5"
             type="button"
             data-testid={ `${index}-ingredient-card` }
             key={ index }
@@ -47,7 +48,9 @@ function IngredientesBebidas() {
       <div>
         {!drinkIngredients ? loadingFunc() : dataRender()}
       </div>
-      <Footer />
+      <div>
+        <Footer />
+      </div>
     </div>
   );
 }

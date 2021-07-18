@@ -238,7 +238,7 @@ justify-content:space-evenly;
 }
 
 .explorer-img-app {
-  width: 30%;
+  width: 100%;
 }
 
 .perfil-container-app {
@@ -264,4 +264,11 @@ justify-content:space-evenly;
   align-items: center;
   align-content: center;
   justify-content: space-around;
+}
+
+.ingredients-button-app {
+  width: 30%;
+  border-style: none !important;
+  border-radius:30px;
+
 }
