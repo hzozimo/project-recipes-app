@@ -179,9 +179,9 @@ justify-content:space-evenly;
 
 .search-bar-buttons-app {
   background-color:#14213D;
-  overflow: hidden;
+  overflow: hidden !important;
   width: 30%;
-  height: 30%;
+  height: 30px;
   border-style: none;
   font-family: fantasy;
   border-radius: 14px;
