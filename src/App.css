@@ -141,8 +141,17 @@ flex-wrap: wrap;
   border-style:none !important;
   border-radius: 14px !important;
   width:100% !important;
-  background-color: #e9c46a !important;
+  background-color: #14213D !important;
 }
+
+.button-entrar-app:disabled,
+.button-entrar-app[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+
+
 
 .button-details-app {
 display:flex;
