@@ -43,7 +43,7 @@ function Comidas() {
                 alt={ food.strMeal }
               />
               <p
-                className="card-title"
+                className="title-foods-app card-title"
                 data-testid={ `${index}-card-name` }
               >
                 {food.strMeal}
