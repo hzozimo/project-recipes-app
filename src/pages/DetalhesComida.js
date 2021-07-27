@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import copy from 'clipboard-copy';
 import ContextRecipes from '../context/ContextRecipes';
 import useFetchIdAndRecomendations from '../Hooks/fetchDetailsAndRecomendations';
@@ -81,9 +81,8 @@ function DetalhesComida() {
         ? (
           <div className="recomendations">
             {recomendations.drinks.slice(0, SEIS).map((drink, index) => (
-              <Link key={ drink.idDrink } to={ `/bebidas/${drink.idDrink}` >
+              <Link key={ drink.idDrink } to={ `/bebidas/${drink.idDrink}` }>
                 <div
-                  
                   data-testid={ `${index}-recomendation-card` }
                 >
                   <div className="mb-5">
@@ -102,8 +101,7 @@ function DetalhesComida() {
                     />
                   </div>
                 </div>
-              </Link>
-            ))}
+              </Link>))}
           </div>)
         : <Loading />
     );
