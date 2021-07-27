@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import copy from 'clipboard-copy';
 import RecipeDrinksButton from '../components/RecipeDrinksButton';
 import ContextRecipes from '../context/ContextRecipes';
